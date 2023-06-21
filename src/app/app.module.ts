@@ -10,6 +10,8 @@ import {LastNewsComponent} from './index/last-news/last-news.component';
 import {MentorsComponent} from './index/mentors/mentors.component';
 import {SlickCarouselModule} from "ngx-slick-carousel";
 import { WitnessesComponent } from './index/witnesses/witnesses.component';
+import { RedirectContactComponent } from './index/redirect-contact/redirect-contact.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { WitnessesComponent } from './index/witnesses/witnesses.component';
     LastNewsComponent,
     MentorsComponent,
     WitnessesComponent,
+    RedirectContactComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
