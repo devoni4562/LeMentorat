@@ -9,6 +9,7 @@ import {PresentationComponent} from './index/presentation/presentation.component
 import {LastNewsComponent} from './index/last-news/last-news.component';
 import {MentorsComponent} from './index/mentors/mentors.component';
 import {SlickCarouselModule} from "ngx-slick-carousel";
+import { WitnessesComponent } from './index/witnesses/witnesses.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {SlickCarouselModule} from "ngx-slick-carousel";
     PresentationComponent,
     LastNewsComponent,
     MentorsComponent,
+    WitnessesComponent,
   ],
   imports: [
     BrowserModule,
