@@ -1,0 +1,26 @@
+<div class="grid grid-cols-12">
+  <button (click)="slickModal.slickPrev()" class="justify-self-center">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M15.75 19.5L8.25 12l7.5-7.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <ngx-slick-carousel #slickModal="slick-carousel"
+                      [config]="slideConfig"
+                      class="carousel col-span-10 col-start-2">
+    <div *ngFor="let slide of slides" class="slide" ngxSlickItem>
+      <div class="grid grid-cols-2 m-5">
+        <p class="text-justify mr-5">{{slide.text}}</p>
+        <img alt="{{slide.name}}" class="" src="{{ slide.img }}">
+      </div>
+    </div>
+  </ngx-slick-carousel>
+  <button (click)="slickModal.slickNext()" class="justify-self-center">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
+
+

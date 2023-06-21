@@ -5,8 +5,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {NgOptimizedImage} from "@angular/common";
-import { PresentationComponent } from './index/presentation/presentation.component';
-import { LastNewsComponent } from './index/last-news/last-news.component';
+import {PresentationComponent} from './index/presentation/presentation.component';
+import {LastNewsComponent} from './index/last-news/last-news.component';
+import {MentorsComponent} from './index/mentors/mentors.component';
+import {SlickCarouselModule} from "ngx-slick-carousel";
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { LastNewsComponent } from './index/last-news/last-news.component';
     NavbarComponent,
     PresentationComponent,
     LastNewsComponent,
+    MentorsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
