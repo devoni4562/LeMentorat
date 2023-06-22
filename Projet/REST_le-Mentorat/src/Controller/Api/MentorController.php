@@ -12,7 +12,7 @@
 
     class MentorController extends AbstractController
     {
-        #[Route('/', name: 'mentor_index')]
+        #[Route('/api/mentors', name: 'mentor_index')]
         public function index(MentorRepository $mentorRepository): JsonResponse
         {
             $mentors = $mentorRepository->findAll();
@@ -24,7 +24,7 @@
                     'avatar' => $mentor->getAvatar(),
                 ];
             }
-            
+
             return new JsonResponse($data);
         }
 
