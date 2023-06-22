@@ -16,7 +16,7 @@ export class WitnessesComponent implements OnInit
 
   ngOnInit()
   {
-    this.witnessesService.getWitnesses().subscribe(data =>
+    this.witnessesService.getWitnesses().subscribe((data: any[]) =>
     {
       this.witnesses = this.shuffle(data).slice(0, 4);
     });
