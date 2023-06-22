@@ -9,9 +9,10 @@ import {PresentationComponent} from './index/presentation/presentation.component
 import {LastNewsComponent} from './index/last-news/last-news.component';
 import {MentorsComponent} from './index/mentors/mentors.component';
 import {SlickCarouselModule} from "ngx-slick-carousel";
-import { WitnessesComponent } from './index/witnesses/witnesses.component';
-import { RedirectContactComponent } from './index/redirect-contact/redirect-contact.component';
-import { FooterComponent } from './footer/footer.component';
+import {WitnessesComponent} from './index/witnesses/witnesses.component';
+import {RedirectContactComponent} from './index/redirect-contact/redirect-contact.component';
+import {FooterComponent} from './footer/footer.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     NgOptimizedImage,
-    SlickCarouselModule
+    SlickCarouselModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

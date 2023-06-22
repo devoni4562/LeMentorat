@@ -10,10 +10,10 @@
     <ngx-slick-carousel #slickModal="slick-carousel"
                         [config]="slideConfig"
                         class="carousel col-span-10 col-start-2">
-      <div *ngFor="let slide of slides" class="slide" ngxSlickItem>
+      <div *ngFor="let mentor of mentors" class="slide" ngxSlickItem>
         <div class="grid grid-cols-2 m-5">
-          <p class="text-justify mr-5 self-center">{{slide.text}}</p>
-          <img alt="{{slide.name}}" src="{{ slide.img }}">
+          <p class="text-justify mr-5 self-center">{{mentor.text}}</p>
+          <img alt="{{mentor.name}}" ngSrc="mentor.avatar">
         </div>
       </div>
     </ngx-slick-carousel>
