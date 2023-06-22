@@ -6,20 +6,40 @@
           <img alt="Logo" height="150" ngSrc="../../assets/img/nav/Logo-rd.png" width="267">
         </a>
       </div>
-      <div class="flex ml-5 space-x-10">
-        <a class=" hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium"
-           id="nav-presentation" routerLink="">Qui Somme Nous ?</a>
-        <a class=" hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium"
-           id="nav-blog" routerLink="">Blog</a>
-        <a class=" hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium"
-           id="nav-methods" routerLink="">Méthodes</a>
-        <a class=" hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium"
-           id="nav-for" routerLink="">Pour Qui?</a>
-        <a class=" hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium"
-           id="nav-freeContent" routerLink="">Contenus Gratuits</a>
+      <div class="grid grid-cols-5 text-center">
+        <div (mouseleave)="usDropdown = false">
+          <a (click)="usDropdown = !usDropdown"
+             (mouseover)="usDropdown = true"
+             class="hover:bg-amber-500 rounded-md text-sm font-medium p-3 mr-3" id="nav-presentation" routerLink="">
+            Qui Somme Nous ?
+          </a>
+          <div *ngIf="usDropdown" class="relative">
+            <div (mouseenter)="usDropdown = true" (mouseleave)="usDropdown = false"
+                 class="absolute z-20 w-[93%] bg-white mt-2 rounded-md shadow-lg origin-top-right ">
+              <!-- Contenu de la liste déroulante -->
+              <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">Les Mentors</a>
+              <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">L'Équipe</a>
+              <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">L'Histoire</a>
+            </div>
+          </div>
+        </div>
+        <!-- Autres liens de la barre de navigation -->
+        <div>
+          <a class="hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium" id="nav-blog" routerLink="">Blog</a>
+        </div>
+        <div>
+          <a class="hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium" id="nav-methods"
+             routerLink="">Méthodes</a>
+        </div>
+        <div>
+          <a class="hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium" id="nav-for" routerLink="">Pour
+                                                                                                            Qui?</a>
+        </div>
+        <div>
+          <a class="hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium" id="nav-freeContent" routerLink="">Contenus
+                                                                                                                    Gratuits</a>
+        </div>
       </div>
     </div>
   </div>
 </nav>
-
-
