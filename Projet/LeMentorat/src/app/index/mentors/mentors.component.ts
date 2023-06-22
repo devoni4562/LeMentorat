@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MentorService} from "../../services/mentor.service";
+import {MentorService} from "../../services/mentor/mentor.service";
 
 @Component({
   selector: 'app-index-mentors',

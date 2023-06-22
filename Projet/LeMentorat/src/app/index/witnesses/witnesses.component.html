@@ -1,9 +1,13 @@
 <div class="-mx-5 pt-8 bg-white">
   <article id="witnesses">
-    <div class="grid grid-cols-4 gap-16 mx-28">
+    <h1 class="text-center font-semibold text-3xl">ILS ONT SUIVI LE MENTORAT</h1>
+    <div class="grid grid-cols-4 gap-16 mx-28 mt-8">
       <div *ngFor="let witness of witnesses">
-        <img [src]="witness.img" alt="{{witness.name}}" class="rounded-full">
-        <p class="text-justify mt-8">{{witness.text}}</p>
+        <img [src]="witness.avatar" alt="{{witness.name}}" class="rounded-full">
+        <div class="mt-5">
+          <h2 class="text-center font-semibold text-lg">{{witness.name}}</h2>
+          <p class="text-justify">{{witness.testimony}}</p>
+        </div>
       </div>
     </div>
   </article>

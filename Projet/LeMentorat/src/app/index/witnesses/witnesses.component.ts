@@ -1,33 +1,42 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {WitnessesService} from "../../services/witnesses/witnesses.service";
 
 @Component({
   selector: 'app-index-witnesses',
   templateUrl: './witnesses.component.html',
   styleUrls: ['./witnesses.component.css']
 })
-export class WitnessesComponent
+export class WitnessesComponent implements OnInit
 {
-  witnesses = [
+  witnesses: any[] = [];
+
+  constructor(private witnessesService: WitnessesService)
+  {
+  }
+
+  ngOnInit()
+  {
+    this.witnessesService.getWitnesses().subscribe(data =>
     {
-      name: 'witness 1',
-      img: 'assets/img/index/witness.jpg',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id mollis tellus, non cursus justo. Proin maximus velit odio, consequat consectetur sem dapibus et. Phasellus vitae quam consequat, blandit ante sit amet, viverra orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in purus porta, ornare est id, pellentesque ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi efficitur ligula a volutpat pharetra.'
-    },
+      this.witnesses = this.shuffle(data).slice(0, 4);
+    });
+  }
+
+  shuffle(anyArray: any[]): any[]
+  {
+    let currentIndex = anyArray.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0)
     {
-      name: 'witness 2',
-      img: 'assets/img/index/witness.jpg',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id mollis tellus, non cursus justo. Proin maximus velit odio, consequat consectetur sem dapibus et. Phasellus vitae quam consequat, blandit ante sit amet, viverra orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in purus porta, ornare est id, pellentesque ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi efficitur ligula a volutpat pharetra.'
-    },
-    {
-      name: 'witness 3',
-      img: 'assets/img/index/witness.jpg',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id mollis tellus, non cursus justo. Proin maximus velit odio, consequat consectetur sem dapibus et. Phasellus vitae quam consequat, blandit ante sit amet, viverra orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in purus porta, ornare est id, pellentesque ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi efficitur ligula a volutpat pharetra.'
-    },
-    {
-      name: 'witness 4',
-      img: 'assets/img/index/witness.jpg',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id mollis tellus, non cursus justo. Proin maximus velit odio, consequat consectetur sem dapibus et. Phasellus vitae quam consequat, blandit ante sit amet, viverra orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in purus porta, ornare est id, pellentesque ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi efficitur ligula a volutpat pharetra.'
-    },
-  ];
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = anyArray[currentIndex];
+      anyArray[currentIndex] = anyArray[randomIndex];
+      anyArray[randomIndex] = temporaryValue;
+    }
+
+    return anyArray;
+  }
 
 }

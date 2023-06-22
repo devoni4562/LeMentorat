@@ -12,8 +12,8 @@
 
     class MentorController extends AbstractController
     {
-        #[Route('/api/mentors', name: 'mentor_index')]
-        public function index(MentorRepository $mentorRepository): JsonResponse
+        #[Route('/api/mentors', methods: ['GET'])]
+        public function getMentors(MentorRepository $mentorRepository): JsonResponse
         {
             $mentors = $mentorRepository->findAll();
             $data = [];
@@ -28,9 +28,7 @@
             return new JsonResponse($data);
         }
 
-        /**
-         * @Route("/api/mentors", methods={"POST"})
-         */
+        #[Route('/api/mentors', methods: ['POST'])]
         public function create(Request $request, EntityManagerInterface $entityManager): JsonResponse
         {
             // Récupérez les données de la requête
