@@ -9,12 +9,23 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/member')]
 class MemberController extends AbstractController
 {
-    #[Route('/', methods: ['GET'])]
-    public function index(): JsonResponse
+    //----------------------------------------------MENTORS-----------------------------------------------------------//
+    #[Route('/mentor', methods: ['GET'])]
+    public function getMentors(MentorRepository $mentorRepository): JsonResponse
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/MemberController.php',
-        ]);
+        $mentors = $mentorRepository->findAll();
+        $data = [];
+        foreach ($mentors as $mentor) {
+            $data[] = [
+                'name' => $mentor->getName(),
+                'description' => $mentor->getDescription(),
+                'avatar' => $mentor->getAvatar(),
+            ];
+        }
+
+        return new JsonResponse($data);
     }
+
+    //----------------------------------------------MENTORS-----------------------------------------------------------//
+
 }
