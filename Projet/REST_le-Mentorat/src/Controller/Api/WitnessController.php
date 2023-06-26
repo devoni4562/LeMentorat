@@ -2,7 +2,6 @@
 
 namespace App\Controller\Api;
 
-use App\Repository\MentorRepository;
 use App\Repository\WitnessRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
