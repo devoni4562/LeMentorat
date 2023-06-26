@@ -1,15 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MentorService {
-  private apiUrl = 'http://localhost:8000/api/mentors';
+export class MentorService
+{
+  private apiUrl = 'http://localhost:8000/members/mentors';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient)
+  {
+  }
 
-  getMentors() {
+  getMentors()
+  {
     return this.http.get<any[]>(this.apiUrl);
   }
 }

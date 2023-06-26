@@ -6,13 +6,13 @@
     <div class="grid grid-cols-4 gap-16 mx-28 mt-8">
       <div *ngFor="let witness of witnesses">
         <img
-          [src]="witness.avatar"
-          alt="{{ witness.name }}"
+          [src]="'http://localhost:8000/res/img/avatar/' + witness.avatar"
+          alt="{{ witness.lastname }}"
           class="rounded-full"
         />
         <div class="mt-5">
-          <h2 class="text-center font-semibold text-lg">{{ witness.name }}</h2>
-          <p class="text-justify">{{ witness.testimony }}</p>
+          <h2 class="text-center font-semibold text-lg">{{ witness.pseudo}}</h2>
+          <p class="text-justify">{{ witness.description }}</p>
         </div>
       </div>
     </div>

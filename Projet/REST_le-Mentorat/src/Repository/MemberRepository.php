@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Member;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -55,6 +57,20 @@ class MemberRepository extends ServiceEntityRepository implements PasswordUpgrad
 
         $this->save($user, true);
     }
+
+    /**
+     * Used to get Mentor
+     */
+    public function getByJobId(int $jobId)
+    {
+         return $this->createQueryBuilder('m')
+            ->andWhere('m.job = :jobId')
+            ->setParameter('jobId', $jobId)
+            ->getQuery()
+            ->getResult();
+    }
+
+
 
 //    /**
 //     * @return Member[] Returns an array of Member objects

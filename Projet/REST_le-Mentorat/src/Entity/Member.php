@@ -28,11 +28,11 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $lastName = null;
 
     #[ORM\Column(length: 50)]
     private ?string $firstName = null;
@@ -47,7 +47,7 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private ?Role $job = null;
 
-    #[ORM\OneToMany(mappedBy: 'writer', targetEntity: article::class)]
+    #[ORM\OneToMany(mappedBy: 'writer', targetEntity: Article::class)]
     private Collection $articles;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -128,14 +128,14 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getName(): ?string
+    public function getLastName(): ?string
     {
-        return $this->name;
+        return $this->lastName;
     }
 
-    public function setName(string $name): static
+    public function setLastName(string $lastName): static
     {
-        $this->name = $name;
+        $this->lastName = $lastName;
 
         return $this;
     }
