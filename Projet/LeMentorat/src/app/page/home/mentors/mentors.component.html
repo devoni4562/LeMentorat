@@ -25,19 +25,19 @@
     >
       <div *ngFor="let mentor of mentors" class="slide" ngxSlickItem>
         <div class="grid grid-cols-2 m-5">
-          <div>
+          <div class="self-center">
             <h2
               class="text-center text-xl font-light underline decoration-1 mb-3"
             >
-              {{ mentor.pseudo.toUpperCase() }}
+              {{mentor.firstname | uppercase | slice:0:1}}{{mentor.firstname | slice:1}} {{ mentor.lastname|uppercase }}
             </h2>
-            <p class="text-justify mr-5 self-center">
+            <p class="text-justify mr-5">
               {{ mentor.description }}
             </p>
           </div>
           <img
             [src]="'http://localhost:8000/res/img/avatar/' + mentor.avatar"
-            alt="{{ mentor.lastname }}"
+            alt="{{ mentor.pseudo }}"
             class="self-center"
           />
         </div>

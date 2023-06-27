@@ -26,6 +26,7 @@ class MemberController extends AbstractController
                 'description' => $mentor->getDescription(),
                 'avatar' => $mentor->getAvatar(),
                 'pseudo' => $mentor->getPseudo(),
+                'firstname' => $mentor->getFirstName(),
             ];
         }
 
