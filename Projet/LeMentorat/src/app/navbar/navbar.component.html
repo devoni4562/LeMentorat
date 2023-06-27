@@ -6,7 +6,7 @@
 
       <!-- -------------------------------------Logo/Index--------------------------------------- -->
       <div class="flex">
-        <a class="flex text-2xl" href="#" id="nav-siteName">
+        <a class="flex text-2xl" id="nav-siteName" routerLink="/">
           <img
             alt="Logo"
             height="150"
@@ -36,7 +36,6 @@
             (mouseover)="mDropdown = true"
             class="hover:bg-amber-500 rounded-md text-sm font-medium p-3 mr-3"
             id="nav-presentation"
-            routerLink=""
           >
             Notre Méthode
           </a>
@@ -53,7 +52,6 @@
             (mouseover)="fcDropdown = true"
             class="hover:bg-amber-500 rounded-md text-sm font-medium p-3"
             id="nav-freeContent"
-            routerLink=""
           >Contenus Gratuits</a>
           <div *ngIf="fcDropdown" class="relative">
             <app-dropdown-free-content></app-dropdown-free-content>
@@ -66,7 +64,7 @@
           <a
             class="hover:bg-amber-500  p-3 rounded-md text-sm font-medium"
             id="nav-blog"
-            routerLink=""
+            routerLink="/blog"
           >Blog</a
           >
         </div>
