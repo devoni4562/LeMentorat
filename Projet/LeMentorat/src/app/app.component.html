@@ -1,9 +1,7 @@
-<div class="mx-5">
-  <app-navbar></app-navbar>
-  <app-index-presentation></app-index-presentation>
-  <app-index-last-news></app-index-last-news>
-  <app-index-mentors></app-index-mentors>
-  <app-index-witnesses></app-index-witnesses>
+<div class="flex flex-col min-h-screen mx-5">
+  <main class="flex-grow">
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+  </main>
 </div>
 <app-footer></app-footer>
-<router-outlet></router-outlet>
