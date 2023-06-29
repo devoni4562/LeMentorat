@@ -19,14 +19,13 @@ class MemberController extends AbstractController
     public function getStaff(MemberRepository $memberRepository, RoleRepository $jobRepository, UserPasswordHasherInterface $hasher, EntityManagerInterface $entityManager):JsonResponse{
 
         $create = new Member();
-        $create->setFirstName('rayan')
-            ->setLastName('ryn')
-            ->setJob($jobRepository->find(6))
-            ->setEmail('rayan@mentorat.com')
-            ->setDescription('Commercial')
-            ->setPseudo('closer2')
-            ->setAvatar('rayan.jpg')
-            ->setPassword($hasher->hashPassword($create, 1234))
+        $create->setFirstName('maxime')
+            ->setLastName('mxm')
+            ->setJob($jobRepository->find(3))
+            ->setEmail('maxime@mentorat.com')
+            ->setDescription("Beaucoup plus de sérénité et de clarté ! C'est le premier accompagnement dans lequel j'ai autant de résultat, j'ai fait mon premier mois à 10'000€ de CA.")
+            ->setPseudo('Agence de setting')
+            ->setAvatar('maxime.png')
             ->setRoles(['ROLE_USER']);
         $entityManager->persist($create);
         $entityManager->flush();
@@ -65,6 +64,12 @@ class MemberController extends AbstractController
                 'avatar' => $mentor->getAvatar(),
                 'pseudo' => $mentor->getPseudo(),
                 'firstname' => $mentor->getFirstName(),
+                'job' => [
+                    'id' => $mentor->getJob()->getId(),
+                    'name' => $mentor->getJob()->getName()
+                ],
+                'role' => $mentor->getRoles(),
+                'email' => $mentor->getEmail(),
             ];
         }
 
@@ -92,6 +97,13 @@ class MemberController extends AbstractController
                 'description' => $witness->getDescription(),
                 'avatar' => $witness->getAvatar(),
                 'pseudo' => $witness->getPseudo(),
+                'firstname' => $witness->getFirstName(),
+                'job' => [
+                    'id' => $witness->getJob()->getId(),
+                    'name' => $witness->getJob()->getName()
+                ],
+                'role' => $witness->getRoles(),
+                'email' => $witness->getEmail(),
             ];
         }
 

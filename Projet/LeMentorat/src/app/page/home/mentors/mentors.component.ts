@@ -10,8 +10,8 @@ export class MentorsComponent implements OnInit
 {
   mentors: any[] = [];
   slideConfig = {
-    slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     prevArrow: '',
     nextArrow: '',
     dots: true,
