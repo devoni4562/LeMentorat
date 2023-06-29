@@ -27,17 +27,17 @@
         <div class="grid grid-cols-2">
           <div class="self-center">
             <h2
-              class="text-center text-2xl font-semibold font-light underline decoration-1 mb-3"
+              class="text-center text-2xl font-semibold underline decoration-1 mb-3"
             >
               {{mentor.firstname | uppercase | slice:0:1}}{{mentor.firstname | slice:1}}
             </h2>
-            <p class="text-center">
+            <p class="text-center px-36">
               {{ mentor.description }}
             </p>
           </div>
           <div class="flex justify-center">
             <img
-              [src]="'http://localhost:8000/res/img/avatar/coaches/' + mentor.avatar"
+              [src]="'http://localhost:8000/res/img/avatar/mentors/' + mentor.avatar"
               alt="{{ mentor.pseudo }}"
               class="rounded-xl"
               height="50%"

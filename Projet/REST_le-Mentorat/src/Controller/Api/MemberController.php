@@ -18,18 +18,6 @@ class MemberController extends AbstractController
 #[Route("/staff", methods: ['GET'])]
     public function getStaff(MemberRepository $memberRepository, RoleRepository $jobRepository, UserPasswordHasherInterface $hasher, EntityManagerInterface $entityManager):JsonResponse{
 
-        $create = new Member();
-        $create->setFirstName('maxime')
-            ->setLastName('mxm')
-            ->setJob($jobRepository->find(3))
-            ->setEmail('maxime@mentorat.com')
-            ->setDescription("Beaucoup plus de sérénité et de clarté ! C'est le premier accompagnement dans lequel j'ai autant de résultat, j'ai fait mon premier mois à 10'000€ de CA.")
-            ->setPseudo('Agence de setting')
-            ->setAvatar('maxime.png')
-            ->setRoles(['ROLE_USER']);
-        $entityManager->persist($create);
-        $entityManager->flush();
-
         $staff = $memberRepository->findAll();
         $data = [];
     foreach ($staff as $member) {
