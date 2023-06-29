@@ -3,8 +3,10 @@
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center space-x-10">
+
+      <!-- -------------------------------------Logo/Index--------------------------------------- -->
       <div class="flex">
-        <a class="flex text-2xl" href="#" id="nav-siteName">
+        <a class="flex text-2xl" id="nav-siteName" routerLink="/">
           <img
             alt="Logo"
             height="150"
@@ -13,75 +15,60 @@
           />
         </a>
       </div>
-      <div class="grid grid-cols-5 text-center">
-        <div (mouseleave)="usDropdown = false">
-          <a
-            (click)="usDropdown = !usDropdown"
-            (mouseover)="usDropdown = true"
-            class="hover:bg-amber-500 rounded-md text-sm font-medium p-3 mr-3"
-            id="nav-presentation"
-            routerLink=""
-          >
-            Qui Somme Nous ?
-          </a>
-          <div *ngIf="usDropdown" class="relative">
-            <div
-              (mouseenter)="usDropdown = true"
-              (mouseleave)="usDropdown = false"
-              class="absolute z-20 w-[93%] bg-white mt-2 rounded-md shadow-lg origin-top-right text-center"
-            >
-              <!-- Contenu de la liste déroulante -->
-              <a
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                href="#"
-              >Notre histoire</a
-              >
-              <a
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                href="#"
-              >Notre mission</a
-              >
-              <a
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                href="#"
-              >Notre expertise</a
-              >
-            </div>
-          </div>
-        </div>
-        <!-- Autres liens de la barre de navigation -->
+      <div class="grid grid-cols-4 gap-16 ">
+
+        <!-- ---------------------------------About Us---------------------------------------- -->
+
         <div>
           <a
-            class="hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium"
+            class="hover:bg-amber-500 p-3 rounded-md text-sm font-medium"
+            id="nav-methods"
+            routerLink="/about-us"
+          >Qui Sommes Nous ?</a
+          >
+        </div>
+
+        <!-- -----------------------------------Method-------------------------------------------- -->
+
+        <div (mouseleave)="mDropdown = false" class="text-center">
+          <a
+            (click)="mDropdown = !mDropdown"
+            (mouseover)="mDropdown = true"
+            class="hover:bg-amber-500 rounded-md text-sm font-medium p-3 mr-3"
+            id="nav-presentation"
+          >
+            Notre Méthode
+          </a>
+          <div *ngIf="mDropdown" class="relative">
+            <app-dropdown-method></app-dropdown-method>
+          </div>
+        </div>
+
+        <!-- ----------------------------------Free Content------------------------------------ -->
+
+        <div (mouseleave)="fcDropdown = false">
+          <a
+            (click)="fcDropdown = true"
+            (mouseover)="fcDropdown = true"
+            class="hover:bg-amber-500 rounded-md text-sm font-medium p-3"
+            id="nav-freeContent"
+          >Contenus Gratuits</a>
+          <div *ngIf="fcDropdown" class="relative">
+            <app-dropdown-free-content></app-dropdown-free-content>
+          </div>
+        </div>
+
+        <!-- -----------------------------------Blog---------------------------------------- -->
+
+        <div>
+          <a
+            class="hover:bg-amber-500  p-3 rounded-md text-sm font-medium"
             id="nav-blog"
-            routerLink=""
+            routerLink="/blog"
           >Blog</a
           >
         </div>
-        <div>
-          <a
-            class="hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium"
-            id="nav-methods"
-            routerLink=""
-          >Méthodes</a
-          >
-        </div>
-        <div>
-          <a
-            class="hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium"
-            id="nav-for"
-            routerLink=""
-          >Pour Qui?</a
-          >
-        </div>
-        <div>
-          <a
-            class="hover:bg-amber-500 px-3 py-2 rounded-md text-sm font-medium"
-            id="nav-freeContent"
-            routerLink=""
-          >Contenus Gratuits</a
-          >
-        </div>
+
       </div>
     </div>
   </div>
