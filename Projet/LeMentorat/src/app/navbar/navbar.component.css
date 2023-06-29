@@ -8,3 +8,4 @@
   z-index          : 9999; /* Assure que l'overlay est au-dessus de tout le contenu */
   pointer-events   : none; /* Permet aux éléments en dessous de l'overlay de rester cliquables */
 }
+
