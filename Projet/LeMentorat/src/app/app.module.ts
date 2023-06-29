@@ -23,6 +23,10 @@ import {CaseStudyComponent} from './page/free-content/case-study/case-study.comp
 import {LiveConferenceComponent} from './page/free-content/live-conference/live-conference.component';
 import {BusinessOwnerCoffeeComponent} from './page/free-content/business-owner-coffee/business-owner-coffee.component';
 import {BlogComponent} from './page/blog/blog.component';
+import { WhiteSectionComponent } from './white-section/white-section.component';
+import { StoryComponent } from './page/about-us/story/story.component';
+import { OurVisionComponent } from './page/about-us/our-vision/our-vision.component';
+import { StaffComponent } from './page/about-us/staff/staff.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,10 @@ import {BlogComponent} from './page/blog/blog.component';
     LiveConferenceComponent,
     BusinessOwnerCoffeeComponent,
     BlogComponent,
+    WhiteSectionComponent,
+    StoryComponent,
+    OurVisionComponent,
+    StaffComponent,
   ],
   imports: [
     BrowserModule,
