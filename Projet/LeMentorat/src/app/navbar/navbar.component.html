@@ -9,17 +9,17 @@
         <a class="flex text-2xl" id="nav-siteName" routerLink="/">
           <img
             alt="Logo"
-            height="150"
-            ngSrc="http://localhost:8000/res/img/logo/Logo-rd.png"
-            width="267"
+
+            src="http://localhost:8000/res/img/logo/Logo-rd.png"
+
           />
         </a>
       </div>
-      <div class="grid grid-cols-4 gap-16 ">
+      <div class="grid grid-cols-10 gap-8 ">
 
         <!-- ---------------------------------About Us---------------------------------------- -->
 
-        <div>
+        <div class="col-span-2 ">
           <a
             class="hover:text-[#122D4E] hover:bg-[#EEF7FF] p-3 rounded-md text-sm font-medium"
             id="nav-methods"
@@ -30,7 +30,7 @@
 
         <!-- -----------------------------------Method-------------------------------------------- -->
 
-        <div (mouseleave)="mDropdown = false" class="text-center">
+        <div (mouseleave)="mDropdown = false" class="text-center col-span-2">
           <a
             (click)="mDropdown = !mDropdown"
             (mouseover)="mDropdown = true"
@@ -46,7 +46,7 @@
 
         <!-- ----------------------------------Free Content------------------------------------ -->
 
-        <div (mouseleave)="fcDropdown = false">
+        <div (mouseleave)="fcDropdown = false" class="col-span-2">
           <a
             (click)="fcDropdown = true"
             (mouseover)="fcDropdown = true"
@@ -60,13 +60,24 @@
 
         <!-- -----------------------------------Blog---------------------------------------- -->
 
-        <div>
+        <div class="col-span-2">
           <a
             class="hover:text-[#122D4E] hover:bg-[#EEF7FF]  p-3 rounded-md text-sm font-medium"
             id="nav-blog"
             routerLink="/blog"
           >Blog</a
           >
+        </div>
+
+        <!-- -------------------------------------Admin--------------------------------------- -->
+
+        <div class="col-start-10 flex justify-end">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd"
+                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                  fill-rule="evenodd"/>
+          </svg>
+
         </div>
 
       </div>

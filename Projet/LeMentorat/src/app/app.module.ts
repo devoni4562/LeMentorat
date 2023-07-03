@@ -23,10 +23,12 @@ import {CaseStudyComponent} from './page/free-content/case-study/case-study.comp
 import {LiveConferenceComponent} from './page/free-content/live-conference/live-conference.component';
 import {BusinessOwnerCoffeeComponent} from './page/free-content/business-owner-coffee/business-owner-coffee.component';
 import {BlogComponent} from './page/blog/blog.component';
-import { WhiteSectionComponent } from './white-section/white-section.component';
-import { StoryComponent } from './page/about-us/story/story.component';
-import { OurVisionComponent } from './page/about-us/our-vision/our-vision.component';
-import { StaffComponent } from './page/about-us/staff/staff.component';
+import {WhiteSectionComponent} from './white-section/white-section.component';
+import {StoryComponent} from './page/about-us/story/story.component';
+import {OurVisionComponent} from './page/about-us/our-vision/our-vision.component';
+import {StaffComponent} from './page/about-us/staff/staff.component';
+import {LoginComponent} from './login/login.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { StaffComponent } from './page/about-us/staff/staff.component';
     StoryComponent,
     OurVisionComponent,
     StaffComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { StaffComponent } from './page/about-us/staff/staff.component';
     NgOptimizedImage,
     SlickCarouselModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

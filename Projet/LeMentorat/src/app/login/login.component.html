@@ -1,0 +1,15 @@
+<div id="formLog">
+  <form (ngSubmit)="submitForm()" [formGroup]="form">
+    <div id="emailOrPseudoLog">
+      <label for="login">Email ou Pseudo :</label>
+      <input formControlName="login" id="login" type="text">
+    </div>
+    <div id="passwordLog">
+      <label for="password">Mot de passe :</label>
+      <input formControlName="password" id="password" type="password">
+    </div>
+    <div id="btnForm">
+      <button type="submit">Se connecter</button>
+    </div>
+  </form>
+</div>
