@@ -27,7 +27,7 @@ import {WhiteSectionComponent} from './white-section/white-section.component';
 import {StoryComponent} from './page/about-us/story/story.component';
 import {OurVisionComponent} from './page/about-us/our-vision/our-vision.component';
 import {StaffComponent} from './page/about-us/staff/staff.component';
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from './page/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({

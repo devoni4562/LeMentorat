@@ -1,12 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MethodDropdownComponent } from './method-dropdown.component';
+import {MethodDropdownComponent} from './method-dropdown.component';
 
-describe('MethodDropdownComponent', () => {
+describe('MethodDropdownComponent', () =>
+{
   let component: MethodDropdownComponent;
   let fixture: ComponentFixture<MethodDropdownComponent>;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({
       declarations: [MethodDropdownComponent]
     });
@@ -15,7 +17,8 @@ describe('MethodDropdownComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });

@@ -1,12 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WhoThatForComponent } from './who-that-for.component';
+import {WhoThatForComponent} from './who-that-for.component';
 
-describe('WhoThatForComponent', () => {
+describe('WhoThatForComponent', () =>
+{
   let component: WhoThatForComponent;
   let fixture: ComponentFixture<WhoThatForComponent>;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({
       declarations: [WhoThatForComponent]
     });
@@ -15,7 +17,8 @@ describe('WhoThatForComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });

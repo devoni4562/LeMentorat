@@ -1,12 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MentoratMethodComponent } from './mentorat-method.component';
+import {MentoratMethodComponent} from './mentorat-method.component';
 
-describe('MentoratMethodComponent', () => {
+describe('MentoratMethodComponent', () =>
+{
   let component: MentoratMethodComponent;
   let fixture: ComponentFixture<MentoratMethodComponent>;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({
       declarations: [MentoratMethodComponent]
     });
@@ -15,7 +17,8 @@ describe('MentoratMethodComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-mentorat-method',
   templateUrl: './mentorat-method.component.html',
   styleUrls: ['./mentorat-method.component.css']
 })
-export class MentoratMethodComponent {
+export class MentoratMethodComponent
+{
 
 }

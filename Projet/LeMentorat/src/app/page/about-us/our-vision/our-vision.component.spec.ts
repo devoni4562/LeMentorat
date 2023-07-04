@@ -1,12 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { OurVisionComponent } from './our-vision.component';
+import {OurVisionComponent} from './our-vision.component';
 
-describe('OurVisionComponent', () => {
+describe('OurVisionComponent', () =>
+{
   let component: OurVisionComponent;
   let fixture: ComponentFixture<OurVisionComponent>;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({
       declarations: [OurVisionComponent]
     });
@@ -15,7 +17,8 @@ describe('OurVisionComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });

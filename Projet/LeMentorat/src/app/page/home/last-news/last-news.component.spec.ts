@@ -1,12 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LastNewsComponent } from './last-news.component';
+import {LastNewsComponent} from './last-news.component';
 
-describe('LastNewsComponent', () => {
+describe('LastNewsComponent', () =>
+{
   let component: LastNewsComponent;
   let fixture: ComponentFixture<LastNewsComponent>;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({
       declarations: [LastNewsComponent],
     });
@@ -15,7 +17,8 @@ describe('LastNewsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });

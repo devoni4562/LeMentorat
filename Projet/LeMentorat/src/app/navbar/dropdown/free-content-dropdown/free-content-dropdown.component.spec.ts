@@ -1,12 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FreeContentDropdownComponent } from './free-content-dropdown.component';
+import {FreeContentDropdownComponent} from './free-content-dropdown.component';
 
-describe('FreeContentDropdownComponent', () => {
+describe('FreeContentDropdownComponent', () =>
+{
   let component: FreeContentDropdownComponent;
   let fixture: ComponentFixture<FreeContentDropdownComponent>;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({
       declarations: [FreeContentDropdownComponent]
     });
@@ -15,7 +17,8 @@ describe('FreeContentDropdownComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });

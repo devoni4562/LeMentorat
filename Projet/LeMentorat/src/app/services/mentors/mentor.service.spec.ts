@@ -1,16 +1,19 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { MentorService } from './mentor.service';
+import {MentorService} from './mentor.service';
 
-describe('MentorService', () => {
+describe('MentorService', () =>
+{
   let service: MentorService;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({});
     service = TestBed.inject(MentorService);
   });
 
-  it('should be created', () => {
+  it('should be created', () =>
+  {
     expect(service).toBeTruthy();
   });
 });

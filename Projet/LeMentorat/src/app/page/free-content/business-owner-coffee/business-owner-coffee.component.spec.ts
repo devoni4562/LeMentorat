@@ -1,12 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BusinessOwnerCoffeeComponent } from './business-owner-coffee.component';
+import {BusinessOwnerCoffeeComponent} from './business-owner-coffee.component';
 
-describe('BusinessOwnerCoffeeComponent', () => {
+describe('BusinessOwnerCoffeeComponent', () =>
+{
   let component: BusinessOwnerCoffeeComponent;
   let fixture: ComponentFixture<BusinessOwnerCoffeeComponent>;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({
       declarations: [BusinessOwnerCoffeeComponent]
     });
@@ -15,7 +17,8 @@ describe('BusinessOwnerCoffeeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });

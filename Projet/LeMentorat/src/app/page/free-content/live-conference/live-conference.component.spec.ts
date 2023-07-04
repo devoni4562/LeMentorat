@@ -1,12 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LiveConferenceComponent } from './live-conference.component';
+import {LiveConferenceComponent} from './live-conference.component';
 
-describe('LiveConferenceComponent', () => {
+describe('LiveConferenceComponent', () =>
+{
   let component: LiveConferenceComponent;
   let fixture: ComponentFixture<LiveConferenceComponent>;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({
       declarations: [LiveConferenceComponent]
     });
@@ -15,7 +17,8 @@ describe('LiveConferenceComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });

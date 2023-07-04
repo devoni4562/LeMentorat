@@ -8,7 +8,8 @@ import {BusinessOwnerCoffeeComponent} from "./page/free-content/business-owner-c
 import {CaseStudyComponent} from "./page/free-content/case-study/case-study.component";
 import {LiveConferenceComponent} from "./page/free-content/live-conference/live-conference.component";
 import {BlogComponent} from "./page/blog/blog.component";
-import {LoginComponent} from "./login/login.component";
+import {LoginComponent} from "./page/login/login.component";
+
 
 const routes: Routes = [
   // home page

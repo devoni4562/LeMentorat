@@ -1,12 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WhiteSectionComponent } from './white-section.component';
+import {WhiteSectionComponent} from './white-section.component';
 
-describe('WhiteSectionComponent', () => {
+describe('WhiteSectionComponent', () =>
+{
   let component: WhiteSectionComponent;
   let fixture: ComponentFixture<WhiteSectionComponent>;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({
       declarations: [WhiteSectionComponent]
     });
@@ -15,7 +17,8 @@ describe('WhiteSectionComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });

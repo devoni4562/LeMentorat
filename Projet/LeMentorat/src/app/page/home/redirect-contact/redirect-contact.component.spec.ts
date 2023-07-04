@@ -1,12 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RedirectContactComponent } from './redirect-contact.component';
+import {RedirectContactComponent} from './redirect-contact.component';
 
-describe('RedirectContactComponent', () => {
+describe('RedirectContactComponent', () =>
+{
   let component: RedirectContactComponent;
   let fixture: ComponentFixture<RedirectContactComponent>;
 
-  beforeEach(() => {
+  beforeEach(() =>
+  {
     TestBed.configureTestingModule({
       declarations: [RedirectContactComponent],
     });
@@ -15,7 +17,8 @@ describe('RedirectContactComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () =>
+  {
     expect(component).toBeTruthy();
   });
 });
