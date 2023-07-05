@@ -71,15 +71,23 @@ class MemberRepository extends ServiceEntityRepository implements PasswordUpgrad
     }
 
 
-    public function findByEmailOrPseudo(string $log) {
+    public function findByEmail(string $log) {
         $query = $this->createQueryBuilder('m')
-            ->andWhere('m.email = :log OR m.pseudo = :log')
+            ->andWhere('m.email = :log')
             ->setParameter('log', $log)
             ->andWhere('m.roles LIKE :role')
             ->setParameter('role', '%"ROLE_ADMIN"%')
             ->getQuery();
 
         return $query->getOneOrNullResult();
+    }
+    public function getAdmins()
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('m.role LIKE :role')
+            ->setParameter('role', '%"ROLE_ADMIN"%')
+            ->getQuery()
+            ->getResult();
     }
 
 

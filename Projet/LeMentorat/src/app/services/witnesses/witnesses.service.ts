@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class WitnessesService
 {
-  private apiUrl = 'http://localhost:8000/members/witnesses';
+  private apiUrl = 'http://localhost:8000/api/members/witnesses';
 
   constructor(private http: HttpClient)
   {

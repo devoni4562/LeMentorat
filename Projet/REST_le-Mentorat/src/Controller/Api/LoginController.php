@@ -17,13 +17,13 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 class LoginController extends AbstractController
 {
 
-    #[Route('/login', methods: ['POST'])]
+    #[Route('/api/login', methods: ['POST'])]
 
-    public function login(Request $request,UserPasswordHasherInterface $hasher, MemberRepository $memberRepository, JWTTokenManagerInterface $JWTManager): Response
+    public function login(Request $request,UserPasswordHasherInterface $hasher, MemberRepository $memberRepository, JWTTokenManagerInterface $JWTManager): JsonResponse
     {
         $formData = json_decode($request->getContent());
 
-        $user = $memberRepository->findByEmailOrPseudo($formData->login);
+        $user = $memberRepository->findByEmail($formData->username);
 
 
         if ($user === null) {
@@ -33,7 +33,7 @@ class LoginController extends AbstractController
         } else {
             if ($hasher->isPasswordValid($user, $formData->password)) {
                 $token = $JWTManager->create($user);
-                $admin[] = [
+                $admin = [
                     'lastname' => $user->getLastName(),
                     'description' => $user->getDescription(),
                     'avatar' => $user->getAvatar(),
@@ -58,7 +58,7 @@ class LoginController extends AbstractController
             }
         }
 
-        return $this->json($response);
+        return new JsonResponse($response);
     }
 
 }

@@ -1,8 +1,8 @@
 <div id="formLog">
   <form (ngSubmit)="submitForm()" [formGroup]="form">
-    <div id="emailOrPseudoLog">
-      <label for="login">Email ou Pseudo :</label>
-      <input formControlName="login" id="login" type="text">
+    <div id="emailLog">
+      <label for="username">Email :</label>
+      <input formControlName="username" id="username" type="email">
     </div>
     <div id="passwordLog">
       <label for="password">Mot de passe :</label>
@@ -12,4 +12,11 @@
       <button type="submit">Se connecter</button>
     </div>
   </form>
+
+  <div *ngIf="authService.admin">
+    <button (click)="getAdmin()">test</button>
+    <div *ngFor="let adm of admins">
+      <p>{{adm.firstname}}</p>
+    </div>
+  </div>
 </div>

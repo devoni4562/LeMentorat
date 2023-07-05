@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class MentorService
 {
-  private apiUrl = 'http://localhost:8000/members/mentors';
+  private apiUrl = 'http://localhost:8000/api/members/mentors';
 
   constructor(private http: HttpClient)
   {

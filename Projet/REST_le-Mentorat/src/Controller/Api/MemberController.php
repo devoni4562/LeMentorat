@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/members')]
+#[Route('/api/members')]
 class MemberController extends AbstractController
 {
 
@@ -63,12 +63,6 @@ class MemberController extends AbstractController
 
 
         return new JsonResponse($data);
-
-    }
-
-    #[Route('/mentors', methods: ['POST'])]
-    public function createMentor(RoleRepository $roleRepository, EntityManagerInterface $entityManager): void
-    {
 
     }
 

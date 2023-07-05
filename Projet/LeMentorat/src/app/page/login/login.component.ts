@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../services/authenticator/auth.service";
 import {HttpClient} from "@angular/common/http";
-import {tap} from "rxjs";
-import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +10,16 @@ import {CookieService} from 'ngx-cookie-service';
 })
 export class LoginComponent
 {
-
+  admins: any[] = [];
   form: FormGroup;
-  apiUrl = 'http://localhost:8000/login';
+  authService: AuthService;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private cookieService: CookieService)
+  constructor(private formBuilder: FormBuilder, authService: AuthService, private http: HttpClient)
   {
+    this.authService = authService;
+
     this.form = this.formBuilder.group({
-      login: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -28,27 +29,21 @@ export class LoginComponent
     if (this.form.valid)
     {
       const formData = this.form.value;
+      console.log(formData);
+      this.authService.login(formData);
 
-      this.http.post<any>(this.apiUrl, formData)
-        .pipe(
-          tap(response =>
-          {
-            const token = response.token;
-            console.log(response);
-            this.cookieService.set('jwt_token', token);
-            this.form.reset();
-          })
-        )
-        .subscribe({
-          next: () =>
-          {
 
-          },
-          error: error =>
-          {
-            console.error(error);
-          }
-        });
+      this.form.reset();
     }
+  }
+
+  getAdmin()
+  {
+    this.http.get<any[]>('http://localhost:8000/api/admin/get_all_admin').subscribe(
+      (data: any[]) =>
+      {
+        this.admins = data;
+      }
+    );
   }
 }
