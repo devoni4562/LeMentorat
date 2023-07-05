@@ -84,7 +84,7 @@ class MemberRepository extends ServiceEntityRepository implements PasswordUpgrad
     public function getAdmins()
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('m.role LIKE :role')
+            ->andWhere('a.roles LIKE :role')
             ->setParameter('role', '%"ROLE_ADMIN"%')
             ->getQuery()
             ->getResult();

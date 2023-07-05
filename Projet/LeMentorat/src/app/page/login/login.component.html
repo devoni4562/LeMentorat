@@ -15,8 +15,9 @@
 
   <div *ngIf="authService.admin">
     <button (click)="getAdmin()">test</button>
-    <div *ngFor="let adm of admins">
-      <p>{{adm.firstname}}</p>
-    </div>
+  </div>
+  <button (click)="getAdmin()">test</button>
+  <div *ngFor="let adm of admins">
+    <p>{{adm.firstname}}</p>
   </div>
 </div>

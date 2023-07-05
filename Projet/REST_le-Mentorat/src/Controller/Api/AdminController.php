@@ -2,14 +2,14 @@
 
 namespace App\Controller\Api;
 
-use App\EventSubscriber\TokenSubscriber;
 use App\Repository\MemberRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-    #[Route('/api/admin')]
+#[
+        Route('/api/admin'),
+]
 class AdminController extends AbstractController
 {
 
