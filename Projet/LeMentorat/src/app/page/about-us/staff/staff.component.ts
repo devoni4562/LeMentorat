@@ -30,10 +30,10 @@ export class StaffComponent implements OnInit
 
   sorting(staff: any[])
   {
-    console.log(staff[1]);
+    
     staff.forEach((member) =>
     {
-      console.log(member.job.id);
+
       switch (member.job.id)
       {
         case 1:

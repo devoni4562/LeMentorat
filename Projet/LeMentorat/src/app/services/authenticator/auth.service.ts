@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient} from "@angular/common/http";
 import {tap} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,13 @@ export class AuthService
 
   token: string | null;
   admin: any;
+  isLoggedIn: boolean = false;
+  responseMessage: string = '';
   apiUrl = 'http://localhost:8000/api/login';
+  public loginSucces: EventEmitter<void> = new EventEmitter<void>();
+  private inactivityTimeout: any;
 
-  constructor(private cookieService: CookieService, private http: HttpClient)
+  constructor(private cookieService: CookieService, private http: HttpClient, private router: Router)
   {
     this.token = this.cookieService.get('jwt_token');
   }
@@ -23,34 +28,51 @@ export class AuthService
     return this.token !== null;
   }
 
-  public login(formData: any)
+  public login(formData: any): void
   {
-
-    let responseMessage;
 
     this.http.post<any>(this.apiUrl, formData)
       .pipe(
         tap(response =>
         {
           this.token = response.token;
-          responseMessage = response.message;
+          this.responseMessage = response.message;
           this.admin = response.admin;
-          console.log(response);
-          console.log(typeof response.admin);
+
           this.cookieService.set('jwt_token', response.token);
         })
       )
       .subscribe({
         next: () =>
         {
-          console.log(this.admin);
+          this.resetInactivityTimeout();
+          this.isLoggedIn = true;
+          this.loginSucces.emit();
         },
         error: error =>
         {
           console.error(error);
         }
       });
+  }
 
-    return responseMessage;
+  logout()
+  {
+    this.isLoggedIn = false;
+    this.router.navigate(['/login']);
+  }
+
+  resetInactivityTimeout(): void
+  {
+    clearTimeout(this.inactivityTimeout);
+    this.startInactivityTimeout();
+  }
+
+  private startInactivityTimeout()
+  {
+    this.inactivityTimeout = setTimeout(() =>
+    {
+      this.logout();
+    }, 15 * 60 * 1000);
   }
 }
