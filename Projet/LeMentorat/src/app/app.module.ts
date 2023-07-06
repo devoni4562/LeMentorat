@@ -30,6 +30,8 @@ import {StaffComponent} from './page/about-us/staff/staff.component';
 import {LoginComponent} from './page/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./Interceptor/AuthInterceptor";
+import { AdminComponent } from './page/admin/admin.component';
+import { CreateArticleComponent } from './page/admin/create-article/create-article.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import {AuthInterceptor} from "./Interceptor/AuthInterceptor";
     OurVisionComponent,
     StaffComponent,
     LoginComponent,
+    AdminComponent,
+    CreateArticleComponent,
   ],
   imports: [
     BrowserModule,

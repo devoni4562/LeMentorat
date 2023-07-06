@@ -45,7 +45,7 @@ export class AuthService
       .subscribe({
         next: () =>
         {
-          this.resetInactivityTimeout();
+          // this.resetInactivityTimeout();
           this.isLoggedIn = true;
           this.loginSucces.emit();
         },
@@ -65,7 +65,7 @@ export class AuthService
   resetInactivityTimeout(): void
   {
     clearTimeout(this.inactivityTimeout);
-    this.startInactivityTimeout();
+    // this.startInactivityTimeout();
   }
 
   private startInactivityTimeout()
