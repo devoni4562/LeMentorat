@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 export class ArticleService
 {
 
-  private apiUrl = 'http://localhost:8000/api/admin/articles/';
+  private apiUrl = 'http://localhost:8000/api/article/';
 
   constructor(private http: HttpClient)
   {

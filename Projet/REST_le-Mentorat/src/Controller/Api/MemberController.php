@@ -16,7 +16,7 @@ class MemberController extends AbstractController
 {
 
 #[Route("/staff", methods: ['GET'])]
-    public function getStaff(MemberRepository $memberRepository, EntityManagerInterface $entityManager):JsonResponse{
+    public function getStaff(MemberRepository $memberRepository):JsonResponse{
 
         $staff = $memberRepository->findAll();
         $data = [];

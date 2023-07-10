@@ -47,6 +47,7 @@ class LoginController extends AbstractController
                     'email' => $user->getEmail(),
                 ];
                 $response = [
+
                     'message' => 'Connexion réussie.',
                     'admin' => $admin,
                     'token' => $token

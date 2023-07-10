@@ -9,8 +9,6 @@ import {CaseStudyComponent} from "./page/free-content/case-study/case-study.comp
 import {LiveConferenceComponent} from "./page/free-content/live-conference/live-conference.component";
 import {BlogComponent} from "./page/blog/blog.component";
 import {LoginComponent} from "./page/login/login.component";
-import {AdminComponent} from "./page/admin/admin.component";
-import {CreateArticleComponent} from "./page/admin/create-article/create-article.component";
 
 
 const routes: Routes = [
@@ -29,9 +27,6 @@ const routes: Routes = [
   {path: 'blog', component: BlogComponent},
   // login section
   {path: 'login', component: LoginComponent},
-  // admin section
-  {path: 'admin', component: AdminComponent},
-  {path: 'admin/create-article', component: CreateArticleComponent},
 ];
 
 @NgModule({

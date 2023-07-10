@@ -1,0 +1,25 @@
+<div>
+  <form (ngSubmit)="submitForm()" [formGroup]="form">
+    <div id="category">
+      <label for="categoryForm">categorie :</label>
+      <select formControlName="category" id="categoryForm">
+        <option *ngFor="let category of categories" [value]="category.id">{{category.wording}}</option>
+      </select>
+    </div>
+    <div id="articleImg">
+      <label for="imgForm">image :</label>
+      <input formControlName="image" id="imgForm" type="file">
+    </div>
+    <div id="pragraph">
+      <label for="paragraphForm">paragraphe :</label>
+      <textarea formControlName="paragraph" id="paragraphForm"></textarea>
+    </div>
+    <div id="articleVideo">
+      <label for="videoForm">video :</label>
+      <input formControlName="video" id="videoForm" type="file">
+    </div>
+    <div>
+      <button type="submit">valider</button>
+    </div>
+  </form>
+</div>
