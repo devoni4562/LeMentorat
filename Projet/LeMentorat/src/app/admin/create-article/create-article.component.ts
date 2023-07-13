@@ -22,14 +22,15 @@ export class CreateArticleComponent implements OnInit
     this.authService = authService;
 
     this.form = this.formBuilder.group({
-      writter: [this.authService.admin, Validators.required],
+      writterId: [this.authService.admin.id, Validators.required],
       category: ['', Validators.required],
-      image: [''],
+      image: [null],
       paragraph: ['', Validators.required],
       video: [''],
-      date: [new Date(), Validators.required]
+      title: ['', Validators.required],
     });
   }
+
 
   ngOnInit()
   {
@@ -41,7 +42,7 @@ export class CreateArticleComponent implements OnInit
 
   submitForm()
   {
-    console.log(this.form.value);
-    this.articleService.createNewArticle(this.form.value);
+
+    this.articleService.createNewArticle(this.form);
   }
 }

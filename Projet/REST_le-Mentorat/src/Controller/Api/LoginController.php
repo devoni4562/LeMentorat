@@ -34,6 +34,7 @@ class LoginController extends AbstractController
             if ($hasher->isPasswordValid($user, $formData->password)) {
                 $token = $JWTManager->create($user);
                 $admin = [
+                    'id' => $user->getId(),
                     'lastname' => $user->getLastName(),
                     'description' => $user->getDescription(),
                     'avatar' => $user->getAvatar(),

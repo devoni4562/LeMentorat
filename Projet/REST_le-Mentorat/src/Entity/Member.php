@@ -47,7 +47,7 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private ?Role $job = null;
 
-    #[ORM\OneToMany(mappedBy: 'writer', targetEntity: Article::class)]
+    #[ORM\OneToMany(mappedBy: 'writter', targetEntity: Article::class)]
     private Collection $articles;
 
     #[ORM\Column(type: Types::TEXT)]
