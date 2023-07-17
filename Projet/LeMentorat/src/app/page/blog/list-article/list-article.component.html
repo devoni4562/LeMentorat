@@ -1,4 +1,6 @@
-<div [id]="'articleN' + article.id" class="flex flex-col justify-center items-center">
+<div (click)="redirectToArticleDetails(article.title)" [id]="'articleN' + article.id"
+     class="flex flex-col justify-center items-center"
+>
   <!-- no hover -->
   <div
     (mouseover)="zoom = true"
@@ -16,7 +18,12 @@
   >
     <h2 class="text-xl font-bold text-center mx-52">{{article.paragraph}}</h2>
   </div>
-  <div class="mt-4">
-    <p>{{article.writter.pseudo}}</p>
+  <div class="mt-4 text-center">
+    <div class="flex justify-center">
+      <img [src]="'http://localhost:8000/res/img/avatar/admin/' + article.writter.avatar" alt="avatar"
+           class=" w-12 rounded-full">
+    </div>
+    <p>Par {{article.writter.pseudo}}</p>
+    <p>Le {{article.date.date | date: 'dd-MM-yyyy'}}</p>
   </div>
 </div>

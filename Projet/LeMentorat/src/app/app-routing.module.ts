@@ -9,6 +9,7 @@ import {CaseStudyComponent} from "./page/free-content/case-study/case-study.comp
 import {LiveConferenceComponent} from "./page/free-content/live-conference/live-conference.component";
 import {BlogComponent} from "./page/blog/blog.component";
 import {LoginComponent} from "./page/login/login.component";
+import {DetailsArticleComponent} from "./page/blog/details-article/details-article.component";
 
 
 const routes: Routes = [
@@ -25,6 +26,8 @@ const routes: Routes = [
   {path: 'live-conference', component: LiveConferenceComponent},
   // blog section
   {path: 'blog', component: BlogComponent},
+  {path: 'blog/:title', component: DetailsArticleComponent},
+
   // login section
   {path: 'login', component: LoginComponent},
 ];

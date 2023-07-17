@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import {Router} from "@angular/router";
+import {ArticleService} from "../../../services/article/article.service";
 
 
 @Component({
@@ -14,4 +16,15 @@ export class ListArticleComponent
 
   zoom: boolean = false;
 
+
+  constructor(private router: Router, private articleService: ArticleService)
+  {
+  }
+
+  redirectToArticleDetails(title: string)
+  {
+    this.articleService.setSelectedArticle(this.article);
+    const encodedTitle = encodeURIComponent(title);
+    this.router.navigate(['/blog', encodedTitle]);
+  }
 }
