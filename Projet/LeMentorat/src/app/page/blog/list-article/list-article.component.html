@@ -1,0 +1,10 @@
+<div class="flex flex-col justify-center items-center">
+
+  <div [id]="'articleN' + id" [style.background-image]="'url(http://localhost:8000/res/articles/img/' + image + ')'"
+       class="h-80 w-2/3 bg-img">
+    <h2>{{title}}</h2>
+  </div>
+  <div class="mt-4">
+    <p>{{writter.pseudo}}</p>
+  </div>
+</div>

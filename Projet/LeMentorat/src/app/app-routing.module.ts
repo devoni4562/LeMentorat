@@ -26,7 +26,7 @@ const routes: Routes = [
   // blog section
   {path: 'blog', component: BlogComponent},
   // login section
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
