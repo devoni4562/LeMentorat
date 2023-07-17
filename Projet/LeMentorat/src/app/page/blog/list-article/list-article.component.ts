@@ -9,11 +9,9 @@ import {Component, Input} from '@angular/core';
 export class ListArticleComponent
 {
 
-  @Input() id: string = '';
-  @Input() title: string = '';
-  @Input() image: string = '';
-  @Input() paragraph: string = '';
-  @Input() writter: any;
+  @Input() bg: string = '';
+  @Input() article: any;
 
+  zoom: boolean = false;
 
 }

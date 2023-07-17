@@ -1,14 +1,11 @@
 <a routerLink="/admin/create-article">create article</a>
 <div *ngFor="let article of articles; let i = index">
   <div *ngIf="i % 2 === 0" class="m-6">
-    <app-list-article [id]="article.id" [image]="article.image" [paragraph]="article.paragraph" [title]="article.title"
-                      [writter]="article.writter"></app-list-article>
+    <app-list-article [article]="article" [bg]="'white'"></app-list-article>
   </div>
   <div *ngIf="i % 2 !== 0">
     <app-white-section>
-      <app-list-article [id]="article.id" [image]="article.image" [paragraph]="article.paragraph"
-                        [title]="article.title"
-                        [writter]="article.writter"></app-list-article>
+      <app-list-article [article]="article" [bg]="'[#EEF7FF]'"></app-list-article>
     </app-white-section>
   </div>
 </div>
