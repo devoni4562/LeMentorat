@@ -16,10 +16,11 @@ export class BlogComponent implements OnInit
 
   ngOnInit()
   {
-    // this.articleService.getAllArticles().subscribe((data: any[]) =>
-    // {
-    //   this.articles = data;
-    // });
+    this.articleService.getAllArticles().subscribe((data: any[]) =>
+    {
+      this.articles = data;
+      console.log(data.length);
+    });
   }
 
 }

@@ -31,6 +31,7 @@ import {LoginComponent} from './page/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./security/Interceptor/AuthInterceptor";
 import {AdminModule} from "./admin/admin.module";
+import { ListArticleComponent } from './page/blog/list-article/list-article.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {AdminModule} from "./admin/admin.module";
     OurVisionComponent,
     StaffComponent,
     LoginComponent,
+    ListArticleComponent,
   ],
   imports: [
     BrowserModule,

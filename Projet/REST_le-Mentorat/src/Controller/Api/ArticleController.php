@@ -19,9 +19,41 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends AbstractController
 {
     #[Route('/', methods: ['GET'])]
-    public function getArticles(ArticleRepository $articleRepository)
+    public function getArticles(ArticleRepository $articleRepository): JsonResponse
     {
-        $articles = [];
+        $articles = $articleRepository->findAll();
+
+        $response = [];
+        foreach ($articles as $article) {
+            $response[] = [
+                'id' => $article->getId(),
+                'writter' => [
+                    'id' => $article->getWritter()->getId(),
+                    'lastname' => $article->getWritter()->getLastName(),
+                    'description' => $article->getWritter()->getDescription(),
+                    'avatar' => $article->getWritter()->getAvatar(),
+                    'pseudo' => $article->getWritter()->getPseudo(),
+                    'firstname' => $article->getWritter()->getFirstName(),
+                    'job' => [
+                        'id' => $article->getWritter()->getJob()->getId(),
+                        'name' => $article->getWritter()->getJob()->getName()
+                    ],
+                    'role' => $article->getWritter()->getRoles(),
+                    'email' => $article->getWritter()->getEmail(),
+                ],
+                'video'=>  $article->getVideo(),
+                'image'=>$article->getImage(),
+                'date'=>$article->getDate(),
+                'paragraph'=>$article->getParagraph(),
+                'category'=> [
+                    'id' => $article->getCategory()->getId(),
+                    'wording' => $article->getCategory()->getLibelle()
+                ],
+                'title' => $article->getTitle(),
+                ];
+        }
+
+        return new JsonResponse($response);
 
     }
 
