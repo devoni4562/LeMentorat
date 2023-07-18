@@ -9,6 +9,7 @@ import {ArticleService} from "../../services/article/article.service";
 export class BlogComponent implements OnInit
 {
   articles: any[] = [];
+  categories: string[] = [];
 
   constructor(private articleService: ArticleService)
   {
@@ -21,6 +22,18 @@ export class BlogComponent implements OnInit
       this.articles = data;
       console.log(data.length);
     });
+
+    this.articles.forEach(article =>
+    {
+      if (article.category)
+      {
+        if (!this.categories.includes(article.category.wording))
+        {
+          this.categories.push(article.category.wording);
+        }
+      }
+    });
+
   }
 
 }

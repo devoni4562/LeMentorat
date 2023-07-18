@@ -1,4 +1,12 @@
 <a routerLink="/admin/create-article">create article</a>
+<div>
+  <span>Catégories :</span>
+  <div *ngFor="let category of categories">
+    <input [id]="category" [value]="category" type="checkbox">
+    <label [for]="category">{{category}}</label>
+  </div>
+</div>
+
 <div *ngFor="let article of articles; let i = index">
   <div *ngIf="i % 2 === 0" class="m-6">
     <app-list-article [article]="article" [bg]="'white'"></app-list-article>
