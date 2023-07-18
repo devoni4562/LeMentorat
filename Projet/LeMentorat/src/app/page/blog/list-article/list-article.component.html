@@ -1,4 +1,4 @@
-<div (click)="redirectToArticleDetails(article.title)" [id]="'articleN' + article.id"
+<div [id]="'articleN' + article.id"
      class="flex flex-col justify-center items-center"
 >
   <!-- no hover -->
@@ -11,6 +11,7 @@
   </div>
   <!-- hover -->
   <div
+    (click)="redirectToArticleDetails(article.title)"
     (mouseleave)="zoom = false"
     *ngIf="zoom"
     [ngClass]="'bg-'+bg"

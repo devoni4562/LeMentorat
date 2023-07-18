@@ -28,11 +28,11 @@ import {StoryComponent} from './page/about-us/story/story.component';
 import {OurVisionComponent} from './page/about-us/our-vision/our-vision.component';
 import {StaffComponent} from './page/about-us/staff/staff.component';
 import {LoginComponent} from './page/login/login.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./security/Interceptor/AuthInterceptor";
 import {AdminModule} from "./admin/admin.module";
-import { ListArticleComponent } from './page/blog/list-article/list-article.component';
-import { DetailsArticleComponent } from './page/blog/details-article/details-article.component';
+import {ListArticleComponent} from './page/blog/list-article/list-article.component';
+import {DetailsArticleComponent} from './page/blog/details-article/details-article.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +69,8 @@ import { DetailsArticleComponent } from './page/blog/details-article/details-art
     SlickCarouselModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AdminModule
+    AdminModule,
+    FormsModule
   ],
   providers: [
     {
