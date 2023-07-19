@@ -43,7 +43,7 @@ export class BlogComponent implements OnInit
 
       this.newestDate = this.articles.reduce((max, article) => (article.date > max ? article.date : max),
         this.articles[0].date);
-      
+
       this.filterArticles();
 
     });
@@ -145,6 +145,7 @@ export class BlogComponent implements OnInit
               article.date <= endDate
             );
           }
+          this.filteredArticles.sort((o, r) => new Date(o.date).getTime() - new Date(r.date).getTime());
           break;
       }
     };
