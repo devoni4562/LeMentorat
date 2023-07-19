@@ -27,7 +27,7 @@ class ArticleController extends AbstractController
         foreach ($articles as $article) {
             $response[] = [
                 'id' => $article->getId(),
-                'writter' => [
+                'writer' => [
                     'id' => $article->getWritter()->getId(),
                     'lastname' => $article->getWritter()->getLastName(),
                     'description' => $article->getWritter()->getDescription(),
@@ -43,7 +43,7 @@ class ArticleController extends AbstractController
                 ],
                 'video'=>  $article->getVideo(),
                 'image'=>$article->getImage(),
-                'date'=>$article->getDate(),
+                'date'=>$article->getDate()->format('Y-m-d'),
                 'paragraph'=>$article->getParagraph(),
                 'category'=> [
                     'id' => $article->getCategory()->getId(),

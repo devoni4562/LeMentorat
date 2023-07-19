@@ -1,14 +1,50 @@
 <a routerLink="/admin/create-article">create article</a>
 <div>
-  <span>Catégories :</span>
-  <div *ngFor="let category of categories">
-    <input #categoryCheckbox (change)="filterArticles()" [id]="category" [value]="category" type="checkbox">
-    <label [for]="category">{{category}}</label>
+  <!-- category sorting -->
+  <div>
+    <span>Catégories :</span>
+    <div *ngFor="let category of categories">
+      <input #categoryCheckbox (change)="filterArticles()" [id]="category" [value]="category" type="checkbox">
+      <label [for]="category">{{category}}</label>
+    </div>
   </div>
+  <!-- name sorting -->
   <div>
     <input (input)="filterArticles()" [(ngModel)]="searchText" placeholder="Rechercher..." type="text">
   </div>
+  <!-- writer sorting -->
+  <div>
+    <select (change)="filterArticles()" [(ngModel)]="selectedWriter">
+      <option selected value="">Tous</option>
+      <option *ngFor="let writer of writers" [value]="writer">{{writer}}</option>
+    </select>
+  </div>
+  <!-- date sorting -->
+  <div>
+    <div>
+      <span>Tri par date :</span>
+      <input (change)="filterArticles()" [(ngModel)]="dateFilterType" name="dateFilter" type="radio"
+             value="recentToOld">Les plus récents
+      <input (change)="filterArticles()" [(ngModel)]="dateFilterType" name="dateFilter" type="radio"
+             value="oldToRecent">Les plus anciens
+      <input (change)="filterArticles()" [(ngModel)]="dateFilterType" name="dateFilter" type="radio"
+             value="specificDate">Date précise
+      <input (change)="filterArticles()" [(ngModel)]="dateFilterType" name="dateFilter" type="radio"
+             value="betweenDates">Entre deux dates
+    </div>
 
+    <div *ngIf="dateFilterType === 'specificDate'">
+      <label for="specificDate">Sélectionner une date :</label>
+      <input (change)="filterArticles()" [max]="newestDate" [min]="oldestDate" id="specificDate" type="date">
+    </div>
+    <div *ngIf="dateFilterType === 'betweenDates'">
+      <label for="startDate">Date de début :</label>
+      <input (change)="filterArticles()" [max]="newestDate" [min]="oldestDate" id="startDate" type="date">
+      <label for="endDate">Date de fin :</label>
+      <input (change)="filterArticles()" [max]="newestDate" [min]="oldestDate" id="endDate" type="date">
+    </div>
+
+  </div>
 </div>
 
 <div *ngFor="let article of filteredArticles; let i = index">
