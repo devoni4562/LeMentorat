@@ -1,4 +1,4 @@
-.checkbox-round
+.selectbox-round
 {
   width              : 1em;
   height             : 1em;
@@ -11,7 +11,7 @@
   cursor             : pointer;
 }
 
-.checkbox-round:checked
+.selectbox-round:checked
 {
   background-color : #122D4E;
   border           : 1px solid white;

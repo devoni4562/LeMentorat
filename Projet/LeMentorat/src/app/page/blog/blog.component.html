@@ -1,67 +1,94 @@
-<a routerLink="/admin/create-article">create article</a>
-<div class="grid grid-cols-3 mt-3">
-  <!-- category sorting -->
-  <div class="grid grid-cols-2 ps-28 pb-10 justify-items-start">
-    <div *ngFor="let category of categories" class="">
-      <input #categoryCheckbox (change)="filterArticles()" [id]="category" [value]="category"
-             class="checkbox-round"
-             type="checkbox">
-      <label [for]="category" class="ms-2 font-medium">{{category}}</label>
+<!-- <a routerLink="/admin/create-article">create article</a> -->
+<div class=" my-3">
+  <div class="grid grid-cols-3 place-content-evenly">
+    <!-- category sorting -->
+    <div class="grid grid-cols-2 px-[15%] pb-[5%] justify-items-start">
+      <div *ngFor="let category of categories" class="">
+        <input #categoryCheckbox (change)="filterArticles()" [id]="category" [value]="category"
+               class="selectbox-round"
+               type="checkbox">
+        <label [for]="category" class="ms-2 font-medium">{{category}}</label>
+      </div>
     </div>
-  </div>
-  <div>
-    <!-- name sorting -->
     <div>
-      <input (input)="filterArticles()" [(ngModel)]="searchText" placeholder="Rechercher..." type="text">
+      <!-- name sorting -->
+      <div>
+        <input (input)="filterArticles()" [(ngModel)]="searchText"
+               class="w-5/6 text-center h-8 border border-[#122D4E] rounded-lg placeholder-[#122D4E]"
+               placeholder="Rechercher..."
+               type="text">
+      </div>
+      <!-- writer sorting -->
+      <div class="mt-2 ms-[13%]">
+        <select (change)="filterArticles()" [(ngModel)]="selectedWriter"
+                class="w-4/6 text-center h-8 border border-[#122D4E] rounded-lg">
+          <option disabled selected value="">--Choisissez un Auteur--</option>
+          <option value="">Tous</option>
+          <option *ngFor="let writer of writers" [value]="writer">{{writer}}</option>
+        </select>
+      </div>
     </div>
-    <!-- writer sorting -->
-    <div>
-      <select (change)="filterArticles()" [(ngModel)]="selectedWriter">
-        <option selected value="">Tous</option>
-        <option *ngFor="let writer of writers" [value]="writer">{{writer}}</option>
-      </select>
-    </div>
-  </div>
-  <!-- date sorting -->
-  <div class="mx-5">
-    <div class="grid grid-cols-3">
-      <span>Tri par date :</span>
-      <div class="col-span-2">
+    <!-- date sorting -->
+    <div class="">
+      <div class="grid grid-cols-2 justify-items-start px-[15%]">
         <div>
-          <input (change)="filterArticles()" [(ngModel)]="dateFilterType" id="old" name="dateFilter" type="radio"
+          <input (change)="filterArticles()" [(ngModel)]="dateFilterType" class="selectbox-round" id="recent"
+                 name="dateFilter" type="radio"
                  value="recentToOld">
-          <label for="old">Les plus récents</label>
+          <label class="ms-2 font-medium" for="recent">Les plus récents</label>
         </div>
         <div>
-          <input (change)="filterArticles()" [(ngModel)]="dateFilterType" name="dateFilter" type="radio"
-                 value="oldToRecent">Les plus anciens
+          <input (change)="filterArticles()" [(ngModel)]="dateFilterType" class="selectbox-round" id="old"
+                 name="dateFilter"
+                 type="radio"
+                 value="oldToRecent"
+          >
+          <label class="ms-2 font-medium" for="old">Les plus anciens</label>
         </div>
         <div>
-          <input (change)="filterArticles()" [(ngModel)]="dateFilterType" name="dateFilter" type="radio"
-                 value="specificDate">Date précise
+          <input (change)="filterArticles()" [(ngModel)]="dateFilterType" class="selectbox-round" id="specific"
+                 name="dateFilter"
+                 type="radio"
+                 value="specificDate">
+          <label class="ms-2 font-medium" for="specific">Date précise</label>
         </div>
         <div>
-          <input (change)="filterArticles()" [(ngModel)]="dateFilterType" name="dateFilter" type="radio"
-                 value="betweenDates">Entre deux dates
+          <input (change)="filterArticles()" [(ngModel)]="dateFilterType" class="selectbox-round" id="between"
+                 name="dateFilter"
+                 type="radio"
+                 value="betweenDates">
+          <label class="ms-2 font-medium" for="between">Entre deux dates</label>
+        </div>
+      </div>
+      <div *ngIf="dateFilterType === 'specificDate'" class="flex justify-end me-24 mt-2">
+        <label for="specificDate">Sélectionnez une date :</label>
+        <input (change)="filterArticles()" [max]="newestDate" [min]="oldestDate"
+               class="bg-white border border-[#122D4E] text-[#122D4E] text-sm rounded-lg focus:ring-[#122D4E] focus:border-[#122D4E] block w-full p-2.5"
+               id="specificDate"
+               type="date">
+      </div>
+      <div *ngIf="dateFilterType === 'betweenDates'" class="flex justify-between mt-2">
+        <div>
+          <label for="startDate">à partir du :</label>
+          <input (change)="filterArticles()" [max]="newestDate" [min]="oldestDate"
+                 class="bg-white border border-[#122D4E] text-[#122D4E] text-sm rounded-lg focus:ring-[#122D4E] focus:border-[#122D4E] block w-full p-2.5 me-2"
+                 id="startDate"
+                 type="date"
+          >
+        </div>
+        <div>
+          <label for="endDate">jusqu'au :</label>
+          <input (change)="filterArticles()" [max]="newestDate" [min]="oldestDate"
+                 class="bg-white border border-[#122D4E] text-sm rounded-lg focus:ring-[#122D4E] focus:border-[#122D4E] block w-full p-2.5"
+                 id="endDate"
+                 type="date"
+          >
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div *ngIf="dateFilterType === 'specificDate'" class="flex justify-end me-36">
-  <label for="specificDate">Sélectionner une date :</label>
-  <input (change)="filterArticles()" [max]="newestDate" [min]="oldestDate" id="specificDate" type="date">
-</div>
-<div *ngIf="dateFilterType === 'betweenDates'" class="flex flex-col">
-  <div class="flex justify-end me-36">
-    <label for="startDate">Date de début :</label>
-    <input (change)="filterArticles()" [max]="newestDate" [min]="oldestDate" id="startDate" type="date">
-  </div>
-  <div class=" flex justify-end me-36">
-    <label for="endDate">Date de fin :</label>
-    <input (change)="filterArticles()" [max]="newestDate" [min]="oldestDate" id="endDate" type="date">
-  </div>
+
 </div>
 <div *ngFor="let article of filteredArticles; let i = index">
   <div *ngIf="i % 2 !== 0" class="m-6">
