@@ -9,9 +9,20 @@ export class ArticleService
 {
 
   private apiUrl = 'http://localhost:8000/api/article/';
+  private selectedArticle: any;
 
   constructor(private http: HttpClient)
   {
+  }
+
+  setSelectedArticle(article: any)
+  {
+    this.selectedArticle = article;
+  }
+
+  getSelectedArticle(): any
+  {
+    return this.selectedArticle;
   }
 
   getAllArticles()

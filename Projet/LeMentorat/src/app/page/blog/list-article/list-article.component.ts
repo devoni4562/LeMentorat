@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import {Router} from "@angular/router";
+import {ArticleService} from "../../../services/article/article.service";
 
 
 @Component({
@@ -9,11 +11,20 @@ import {Component, Input} from '@angular/core';
 export class ListArticleComponent
 {
 
-  @Input() id: string = '';
-  @Input() title: string = '';
-  @Input() image: string = '';
-  @Input() paragraph: string = '';
-  @Input() writter: any;
+  @Input() bg: string = '';
+  @Input() article: any;
+
+  zoom: boolean = false;
 
 
+  constructor(private router: Router, private articleService: ArticleService)
+  {
+  }
+
+  redirectToArticleDetails(title: string)
+  {
+    this.articleService.setSelectedArticle(this.article);
+    const encodedTitle = encodeURIComponent(title);
+    this.router.navigate(['/blog', encodedTitle]);
+  }
 }
