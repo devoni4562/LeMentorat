@@ -45,7 +45,7 @@ export class AuthService
       .subscribe({
         next: () =>
         {
-          // this.resetInactivityTimeout();
+          this.resetInactivityTimeout();
           this.isLoggedIn = true;
           this.loginSucces.emit();
         },
@@ -59,13 +59,14 @@ export class AuthService
   logout()
   {
     this.isLoggedIn = false;
+    this.cookieService.delete('jwt_token');
     this.router.navigate(['/login']);
   }
 
   resetInactivityTimeout(): void
   {
     clearTimeout(this.inactivityTimeout);
-    // this.startInactivityTimeout();
+    this.startInactivityTimeout();
   }
 
   private startInactivityTimeout()

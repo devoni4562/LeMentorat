@@ -1,27 +1,27 @@
 <nav
   class="sticky top-0 mt-3 w-full bg-[#122D4E] rounded-xl z-10 text-[#EEF7FF]"
 >
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center space-x-10">
+  <div class=" max-h-20 px-4 sm:px-6 lg:px-8 2xl:text-lg text-sm">
+    <div class="flex h-16 items-center gap-x-[8%] w-full">
 
       <!-- -------------------------------------Logo/Index--------------------------------------- -->
-      <div class="flex">
-        <a class="flex text-2xl" id="nav-siteName" routerLink="/">
+      <div class="ms-20">
+        <a class="text-2xl" id="nav-siteName" routerLink="/">
           <img
             alt="Logo"
-
+            class="h-[80px]"
             src="http://localhost:8000/res/img/logo/Logo-rd.png"
 
           />
         </a>
       </div>
-      <div class="grid grid-cols-10 gap-8 ">
+      <div class="grid grid-cols-10 w-full ">
 
         <!-- ---------------------------------About Us---------------------------------------- -->
 
         <div class="col-span-2 ">
           <a
-            class="hover:text-[#122D4E] hover:bg-[#EEF7FF] p-3 rounded-md text-sm font-medium"
+            class="hover:text-[#122D4E] hover:bg-[#EEF7FF] p-3 rounded-md font-medium"
             id="nav-methods"
             routerLink="/about-us"
           >Qui Sommes Nous ?</a
@@ -34,7 +34,7 @@
           <a
             (click)="mDropdown = !mDropdown"
             (mouseover)="mDropdown = true"
-            class="hover:text-[#122D4E] hover:bg-[#EEF7FF] rounded-md text-sm font-medium p-3 mr-3"
+            class="hover:text-[#122D4E] hover:bg-[#EEF7FF] rounded-md font-medium p-3 mr-3"
             id="nav-presentation"
           >
             Notre Méthode
@@ -50,7 +50,7 @@
           <a
             (click)="fcDropdown = true"
             (mouseover)="fcDropdown = true"
-            class="hover:text-[#122D4E] hover:bg-[#EEF7FF] rounded-md text-sm font-medium p-3"
+            class="hover:text-[#122D4E] hover:bg-[#EEF7FF] rounded-md font-medium p-3"
             id="nav-freeContent"
           >Contenus Gratuits</a>
           <div *ngIf="fcDropdown" class="relative">
@@ -62,7 +62,7 @@
 
         <div class="col-span-2">
           <a
-            class="hover:text-[#122D4E] hover:bg-[#EEF7FF]  p-3 rounded-md text-sm font-medium"
+            class="hover:text-[#122D4E] hover:bg-[#EEF7FF]  p-3 rounded-md font-medium"
             id="nav-blog"
             routerLink="/blog"
           >Blog</a
