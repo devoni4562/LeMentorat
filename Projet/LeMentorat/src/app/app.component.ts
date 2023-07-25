@@ -8,12 +8,13 @@ import {NavigationEnd, Router} from "@angular/router";
 })
 export class AppComponent implements OnInit
 {
+
   title = 'LeMentorat';
 
   constructor(private router: Router)
   {
   }
-
+  
   ngOnInit()
   {
     this.router.events.subscribe((event) =>
