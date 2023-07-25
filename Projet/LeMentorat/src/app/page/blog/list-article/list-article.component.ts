@@ -24,7 +24,7 @@ export class ListArticleComponent
   redirectToArticleDetails(title: string)
   {
     this.articleService.setSelectedArticle(this.article);
-    const encodedTitle = encodeURIComponent(title);
+    const encodedTitle = encodeURIComponent(title.replace(' ', '_'));
     this.router.navigate(['/blog', encodedTitle]);
   }
 }

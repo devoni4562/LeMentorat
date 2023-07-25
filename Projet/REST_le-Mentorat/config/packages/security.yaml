@@ -14,7 +14,7 @@ security:
                 property: email
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt)|css|images|js|pdf)/
             security: false
 #        main:
 #            lazy: true
@@ -43,7 +43,7 @@ security:
     access_control:
          - { path: ^/api/admin, roles: ROLE_ADMIN }
          - { path: ^/api, roles: PUBLIC_ACCESS }
-
+         - { path: ^/res, roles: PUBLIC_ACCESS }
 when@test:
     security:
         password_hashers:

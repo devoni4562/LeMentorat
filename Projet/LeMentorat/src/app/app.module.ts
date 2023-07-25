@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
-import {NgOptimizedImage} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {PresentationComponent} from './page/home/presentation/presentation.component';
 import {LastNewsComponent} from './page/home/last-news/last-news.component';
 import {MentorsComponent} from './page/home/mentors/mentors.component';
@@ -70,7 +70,8 @@ import {DetailsArticleComponent} from './page/blog/details-article/details-artic
     HttpClientModule,
     ReactiveFormsModule,
     AdminModule,
-    FormsModule
+    FormsModule,
+    CommonModule,
   ],
   providers: [
     {
