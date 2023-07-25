@@ -9,20 +9,12 @@ import {NavigationEnd, Router} from "@angular/router";
 export class AppComponent implements OnInit
 {
 
-  @HostListener('window:beforeunload', ['$event'])
-
   title = 'LeMentorat';
-  exitModal = false;
 
   constructor(private router: Router)
   {
   }
-
-  showExitModal($event: any)
-  {
-    this.exitModal = true;
-  }
-
+  
   ngOnInit()
   {
     this.router.events.subscribe((event) =>
