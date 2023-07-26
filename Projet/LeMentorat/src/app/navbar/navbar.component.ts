@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit
   {
     this.router.events.subscribe((events) =>
     {
-      if (events instanceof NavigationEnd)
+      if (events instanceof NavigationEnd && this.authService.isLoggedIn)
       {
         this.authService.resetInactivityTimeout();
         console.log('reset Timeout');
