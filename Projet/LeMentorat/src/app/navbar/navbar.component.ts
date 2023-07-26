@@ -1,34 +1,26 @@
-import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, Router} from "@angular/router";
-import {AuthService} from "../services/authenticator/auth.service";
+import {Component, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit
+export class NavbarComponent
 {
 
-  mDropdown: boolean = false;
-  fcDropdown: boolean = false;
-  authService: AuthService;
+  burgerToggle = false;
+  isLargedScreen = window.innerWidth >= 1024;
 
-  constructor(authService: AuthService, private router: Router)
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any)
   {
-    this.authService = authService;
+    this.isLargedScreen = event.target.innerWidth >= 1024;
   }
 
-  ngOnInit()
+  toggleNavbar()
   {
-    this.router.events.subscribe((events) =>
-    {
-      if (events instanceof NavigationEnd)
-      {
-        this.authService.resetInactivityTimeout();
-        console.log('reset Timeout');
-      }
-    });
+    this.burgerToggle = !this.burgerToggle;
+    console.log(this.burgerToggle);
   }
 
 }

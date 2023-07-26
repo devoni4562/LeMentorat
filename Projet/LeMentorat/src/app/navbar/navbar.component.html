@@ -1,85 +1,53 @@
 <nav
   class="sticky top-0 mt-3 w-full bg-[#122D4E] rounded-xl z-10 text-[#EEF7FF]"
 >
-  <div class=" max-h-20 px-4 sm:px-6 lg:px-8 2xl:text-lg text-sm">
-    <div class="flex h-16 items-center gap-x-[8%] w-full">
+  <div class="max-h-20 px-2 lg:px-4 2xl:text-lg xl:text-base lg:text-sm">
+    <div class="flex h-16 items-center xl:gap-x-[5%] lg:gap-x-[3%] w-full">
 
       <!-- -------------------------------------Logo/Index--------------------------------------- -->
-      <div class="ms-20">
-        <a class="text-2xl" id="nav-siteName" routerLink="/">
+      <div class="flex justify-center">
+        <a id="nav-siteName" routerLink="/">
           <img
             alt="Logo"
-            class="h-[80px]"
+            class="min-h-[80px]"
             src="http://localhost:8000/res/img/logo/Logo-rd.png"
 
           />
         </a>
       </div>
-      <div class="grid grid-cols-10 w-full ">
 
-        <!-- ---------------------------------About Us---------------------------------------- -->
-
-        <div class="col-span-2 ">
-          <a
-            class="hover:text-[#122D4E] hover:bg-[#EEF7FF] p-3 rounded-md font-medium"
-            id="nav-methods"
-            routerLink="/about-us"
-          >Qui Sommes Nous ?</a
-          >
-        </div>
-
-        <!-- -----------------------------------Method-------------------------------------------- -->
-
-        <div (mouseleave)="mDropdown = false" class="text-center col-span-2">
-          <a
-            (click)="mDropdown = !mDropdown"
-            (mouseover)="mDropdown = true"
-            class="hover:text-[#122D4E] hover:bg-[#EEF7FF] rounded-md font-medium p-3 mr-3"
-            id="nav-presentation"
-          >
-            Notre Méthode
-          </a>
-          <div *ngIf="mDropdown" class="relative">
-            <app-dropdown-method></app-dropdown-method>
-          </div>
-        </div>
-
-        <!-- ----------------------------------Free Content------------------------------------ -->
-
-        <div (mouseleave)="fcDropdown = false" class="col-span-2">
-          <a
-            (click)="fcDropdown = true"
-            (mouseover)="fcDropdown = true"
-            class="hover:text-[#122D4E] hover:bg-[#EEF7FF] rounded-md font-medium p-3"
-            id="nav-freeContent"
-          >Contenus Gratuits</a>
-          <div *ngIf="fcDropdown" class="relative">
-            <app-dropdown-free-content></app-dropdown-free-content>
-          </div>
-        </div>
-
-        <!-- -----------------------------------Blog---------------------------------------- -->
-
-        <div class="col-span-2">
-          <a
-            class="hover:text-[#122D4E] hover:bg-[#EEF7FF]  p-3 rounded-md font-medium"
-            id="nav-blog"
-            routerLink="/blog"
-          >Blog</a
-          >
-        </div>
-
-        <!-- -------------------------------------Admin--------------------------------------- -->
-
-        <div *ngIf="authService.isLoggedIn" class="col-start-9 col-span-2 flex justify-end" id="admin-icon">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path clip-rule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  fill-rule="evenodd"/>
-          </svg>
-        </div>
-
+      <div *ngIf="isLargedScreen" class="w-full">
+        <app-navbar-content [givenClass]="'grid-cols-5 justify-items-center min-w-[754px]'"></app-navbar-content>
       </div>
+
+      <div *ngIf="!isLargedScreen" class=" w-full flex justify-end me-[2%]">
+        <svg (click)="toggleNavbar()" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5"
+             viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+
     </div>
   </div>
 </nav>
+<div *ngIf="burgerToggle"
+     class="fixed top-0 right-0 w-full h-full bg-black bg-opacity-50 z-10">
+  <div class="bg-[#122D4E] w-1/3 fixed top-0 right-0 h-full text-[#EEF7FF] ">
+    <div class="w-full flex justify-end me-[2%]">
+      <svg
+        (click)="toggleNavbar()"
+        class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="mt-10 grid gap-y-4">
+      <a href="/">Accueil</a>
+      <app-navbar-content
+        [givenClass]="'grid-rows-5 grid-cols-1 justify-items-start  gap-y-5'"></app-navbar-content>
+    </div>
+  </div>
+</div>

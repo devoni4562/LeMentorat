@@ -33,6 +33,7 @@ import {AuthInterceptor} from "./security/Interceptor/AuthInterceptor";
 import {AdminModule} from "./admin/admin.module";
 import {ListArticleComponent} from './page/blog/list-article/list-article.component';
 import {DetailsArticleComponent} from './page/blog/details-article/details-article.component';
+import { NavbarContentComponent } from './navbar/navbar-content/navbar-content/navbar-content.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import {DetailsArticleComponent} from './page/blog/details-article/details-artic
     LoginComponent,
     ListArticleComponent,
     DetailsArticleComponent,
+    NavbarContentComponent,
   ],
   imports: [
     BrowserModule,
