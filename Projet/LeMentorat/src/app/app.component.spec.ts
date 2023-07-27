@@ -30,7 +30,7 @@ describe('AppComponent', () =>
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
+    expect(compiled.querySelector('.admin-content span')?.textContent).toContain(
       'LeMentorat app is running!'
     );
   });

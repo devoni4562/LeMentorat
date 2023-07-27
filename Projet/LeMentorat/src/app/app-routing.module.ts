@@ -20,7 +20,7 @@ const routes: Routes = [
   // our method section
   {path: 'mentorat_s-method', component: MentoratMethodComponent},
   {path: 'who_s-that-for', component: WhoThatForComponent},
-  // free content section
+  // free admin-content section
   {path: 'business-owner_s-coffee', component: BusinessOwnerCoffeeComponent},
   {path: 'case-study', component: CaseStudyComponent},
   {path: 'live-conference', component: LiveConferenceComponent},

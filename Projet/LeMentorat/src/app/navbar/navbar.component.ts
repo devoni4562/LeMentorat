@@ -1,28 +1,42 @@
 import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, Router} from "@angular/router";
-import {AuthService} from "../services/authenticator/auth.service";
+import {ScreenWidthService} from "../services/screen-width/screen-width.service";
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit
 {
 
-  mDropdown: boolean = false;
-  fcDropdown: boolean = false;
-  authService: AuthService;
+    burgerToggle = false;
+    isLargedScreen = false;
 
-  constructor(authService: AuthService, private router: Router)
-  {
-    this.authService = authService;
-  }
-
-  ngOnInit()
-  {
-    this.router.events.subscribe((events) =>
+    constructor(private screenWidthService: ScreenWidthService)
     {
+    }
+
+
+    ngOnInit()
+    {
+        this.screenWidthService.isLargeScreen$.subscribe((isLargeScreen) =>
+        {
+            this.isLargedScreen = isLargeScreen;
+
+            if (this.isLargedScreen && this.burgerToggle)
+            {
+                this.toggleNavbar();
+            }
+        });
+    }
+
+    toggleNavbar()
+    {
+
+        this.burgerToggle = !this.burgerToggle;
+        console.log(this.burgerToggle);
+    }
+
       if (events instanceof NavigationEnd && this.authService.isLoggedIn)
       {
         this.authService.resetInactivityTimeout();
@@ -30,5 +44,4 @@ export class NavbarComponent implements OnInit
       }
     });
   }
-
 }
