@@ -70,7 +70,7 @@
   <!-- -------------------------------------Admin--------------------------------------- -->
 
   <div *ngIf="authService.isLoggedIn"
-       [ngClass]="{'justify-items-center grid grid-cols-2': isLargeScreen, 'p-3 flex': !isLargeScreen}"
+       [ngClass]="{'justify-items-center grid grid-cols-2': isLargeScreen, 'px-3 flex': !isLargeScreen}"
        class="col-span-1 grid grid-cols-2" id="admin-icon">
     <p (click)="toggleAdmin()" *ngIf="isLargeScreen">{{authService.admin.pseudo}}</p>
     <svg (click)="toggleAdmin()" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"

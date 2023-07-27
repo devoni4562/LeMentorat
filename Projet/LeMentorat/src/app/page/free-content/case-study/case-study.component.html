@@ -11,11 +11,24 @@
   </div>
 </app-white-section>
 
-
-<div *ngFor="let group of videoGroups; let i = index">
-  <div *ngIf="i % 2 !== 0">
-    <app-white-section>
-      <div class="grid grid-cols-1 lg:grid-cols-2 justify-items-center">
+<div *ngIf="isLargeScreen">
+  <div *ngFor="let group of videoGroups; let i = index">
+    <div *ngIf="i % 2 !== 0">
+      <app-white-section>
+        <div class="grid grid-cols-2 justify-items-center">
+          <div *ngFor="let video of group" class="col-span-1">
+            <h4 class="text-xl font-semibold underline underline-offset-4 text-center mb-3">{{video.title}}</h4>
+            <app-youtube-video-insert
+              [id]="video.htmlId"
+              [link]="video.link"
+              [title]="video.title"
+            ></app-youtube-video-insert>
+          </div>
+        </div>
+      </app-white-section>
+    </div>
+    <div *ngIf="i % 2 === 0">
+      <div class="grid grid-cols-2 justify-items-center mx-5 my-8">
         <div *ngFor="let video of group" class="col-span-1">
           <h4 class="text-xl font-semibold underline underline-offset-4 text-center mb-3">{{video.title}}</h4>
           <app-youtube-video-insert
@@ -25,17 +38,36 @@
           ></app-youtube-video-insert>
         </div>
       </div>
-    </app-white-section>
+    </div>
   </div>
-  <div *ngIf="i % 2 === 0">
-    <div class="grid grid-cols-1 lg:grid-cols-2 justify-items-center mx-5 my-8">
-      <div *ngFor="let video of group" class="col-span-1">
-        <h4 class="text-xl font-semibold underline underline-offset-4 text-center mb-3">{{video.title}}</h4>
-        <app-youtube-video-insert
-          [id]="video.htmlId"
-          [link]="video.link"
-          [title]="video.title"
-        ></app-youtube-video-insert>
+</div>
+
+<div *ngIf="!isLargeScreen">
+  <div *ngFor="let videos of videoCaseStudy; let i = index">
+    <div *ngIf="i % 2 !== 0">
+      <app-white-section>
+        <div class="grid grid-cols-1 justify-items-center">
+          <div *ngFor="let video of videos" class="col-span-1">
+            <h4 class="text-xl font-semibold underline underline-offset-4 text-center mb-3">{{video.title}}</h4>
+            <app-youtube-video-insert
+              [id]="video.htmlId"
+              [link]="video.link"
+              [title]="video.title"
+            ></app-youtube-video-insert>
+          </div>
+        </div>
+      </app-white-section>
+    </div>
+    <div *ngIf="i % 2 === 0">
+      <div class="grid grid-cols-1 justify-items-center mx-5 my-8">
+        <div *ngFor="let video of videos" class="col-span-1">
+          <h4 class="text-xl font-semibold underline underline-offset-4 text-center mb-3">{{video.title}}</h4>
+          <app-youtube-video-insert
+            [id]="video.htmlId"
+            [link]="video.link"
+            [title]="video.title"
+          ></app-youtube-video-insert>
+        </div>
       </div>
     </div>
   </div>
