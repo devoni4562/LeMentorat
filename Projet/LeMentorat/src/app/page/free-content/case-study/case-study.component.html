@@ -1,4 +1,42 @@
-<p>Retrouvez des études de cas d’entrepreneurs qui sont passés exactement par ce que vous êtes en train de vivre
-   actuellement dans votre activité.</p>
+<h2 class="text-5xl text-center font-semibold my-5">Étude de cas</h2>
 
-<span class="text-gray-500">-- renvoyer sur des liens youtube --</span>
+<app-white-section>
+  <div class="flex justify-center">
+    <p class=" w-1/3 text-xl text-center place-self-center ">Retrouvez des études de cas d’entrepreneurs qui sont
+                                                             passés
+                                                             exactement par ce que vous
+                                                             êtes en train
+                                                             de vivre
+                                                             actuellement dans votre activité.</p>
+  </div>
+</app-white-section>
+
+
+<div *ngFor="let group of videoGroups; let i = index">
+  <div *ngIf="i % 2 !== 0">
+    <app-white-section>
+      <div class="grid grid-cols-1 lg:grid-cols-2 justify-items-center">
+        <div *ngFor="let video of group" class="col-span-1">
+          <h4 class="text-xl font-semibold underline underline-offset-4 text-center mb-3">{{video.title}}</h4>
+          <app-youtube-video-insert
+            [id]="video.htmlId"
+            [link]="video.link"
+            [title]="video.title"
+          ></app-youtube-video-insert>
+        </div>
+      </div>
+    </app-white-section>
+  </div>
+  <div *ngIf="i % 2 === 0">
+    <div class="grid grid-cols-1 lg:grid-cols-2 justify-items-center mx-5 my-8">
+      <div *ngFor="let video of group" class="col-span-1">
+        <h4 class="text-xl font-semibold underline underline-offset-4 text-center mb-3">{{video.title}}</h4>
+        <app-youtube-video-insert
+          [id]="video.htmlId"
+          [link]="video.link"
+          [title]="video.title"
+        ></app-youtube-video-insert>
+      </div>
+    </div>
+  </div>
+</div>

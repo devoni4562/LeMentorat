@@ -32,9 +32,16 @@ export class NavbarComponent implements OnInit
 
     toggleNavbar()
     {
+
         this.burgerToggle = !this.burgerToggle;
         console.log(this.burgerToggle);
     }
 
-
+      if (events instanceof NavigationEnd && this.authService.isLoggedIn)
+      {
+        this.authService.resetInactivityTimeout();
+        console.log('reset Timeout');
+      }
+    });
+  }
 }
