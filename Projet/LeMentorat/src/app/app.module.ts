@@ -35,58 +35,58 @@ import {ListArticleComponent} from './page/blog/list-article/list-article.compon
 import {DetailsArticleComponent} from './page/blog/details-article/details-article.component';
 import {NavbarContentComponent} from './navbar/navbar-content/navbar-content/navbar-content.component';
 import {MethodContentComponent} from './navbar/dropdown/method-dropdown/content/method-content.component';
-import { ContentFreeCntComponent } from './navbar/dropdown/free-content-dropdown/content/content-free-cnt/content-free-cnt.component';
+import {FreeCntContentComponent} from './navbar/dropdown/free-content-dropdown/content/free-cnt-content.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    PresentationComponent,
-    LastNewsComponent,
-    MentorsComponent,
-    WitnessesComponent,
-    RedirectContactComponent,
-    FooterComponent,
-    MethodDropdownComponent,
-    FreeContentDropdownComponent,
-    AboutUsComponent,
-    HomeComponent,
-    MentoratMethodComponent,
-    WhoThatForComponent,
-    CaseStudyComponent,
-    LiveConferenceComponent,
-    BusinessOwnerCoffeeComponent,
-    BlogComponent,
-    WhiteSectionComponent,
-    StoryComponent,
-    OurVisionComponent,
-    StaffComponent,
-    LoginComponent,
-    ListArticleComponent,
-    DetailsArticleComponent,
-    NavbarContentComponent,
-    MethodContentComponent,
-    ContentFreeCntComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgOptimizedImage,
-    SlickCarouselModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AdminModule,
-    FormsModule,
-    CommonModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        PresentationComponent,
+        LastNewsComponent,
+        MentorsComponent,
+        WitnessesComponent,
+        RedirectContactComponent,
+        FooterComponent,
+        MethodDropdownComponent,
+        FreeContentDropdownComponent,
+        AboutUsComponent,
+        HomeComponent,
+        MentoratMethodComponent,
+        WhoThatForComponent,
+        CaseStudyComponent,
+        LiveConferenceComponent,
+        BusinessOwnerCoffeeComponent,
+        BlogComponent,
+        WhiteSectionComponent,
+        StoryComponent,
+        OurVisionComponent,
+        StaffComponent,
+        LoginComponent,
+        ListArticleComponent,
+        DetailsArticleComponent,
+        NavbarContentComponent,
+        MethodContentComponent,
+        FreeCntContentComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgOptimizedImage,
+        SlickCarouselModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        AdminModule,
+        FormsModule,
+        CommonModule,
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent],
 })
 export class AppModule
 {

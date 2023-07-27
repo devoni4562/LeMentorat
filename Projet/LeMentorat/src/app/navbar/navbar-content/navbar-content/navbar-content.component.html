@@ -22,7 +22,7 @@
                 (click)="mDropdown = true"
                 (mouseover)="mDropdown = true"
                 [ngClass]="{'rounded-md hover:text-[#122D4E] hover:bg-[#EEF7FF]' : isLargeScreen, 'rounded-tr-md': !isLargeScreen }"
-                class=" p-3"
+                class="p-3"
                 id="nav-presentation"
         >
             Notre Méthode
@@ -47,12 +47,13 @@
                 id="nav-freeContent"
         >Contenus Gratuits
         </a>
-        <div *ngIf="fcDropdown && isLargeScreen" class="relative w-full">
+        <div *ngIf="fcDropdown && isLargeScreen" class="relative">
             <app-dropdown-free-content></app-dropdown-free-content>
         </div>
-    </div>
-    <div *ngIf="fcDropdown && !isLargeScreen" class="relative w-full">
-        <app-dropdown-free-content></app-dropdown-free-content>
+        <div *ngIf="fcDropdown && !isLargeScreen"
+             class="w-full rounded-r-md p-[5%] text-center text-[#EEF7FF] flex-initial">
+            <app-free-cnt-content></app-free-cnt-content>
+        </div>
     </div>
     <!-- -----------------------------------Blog---------------------------------------- -->
 
