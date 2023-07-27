@@ -1,65 +1,78 @@
 <div
-  [ngClass]="givenClass"
-  class="grid w-full ">
-  <!-- ---------------------------------About Us---------------------------------------- -->
+        [ngClass]="givenClass"
+        class="w-full font-medium">
+    <!-- ---------------------------------About Us---------------------------------------- -->
 
-  <div class="col-span-1 min-w-[150px]">
-    <a
-      class="hover:text-[#122D4E] hover:bg-[#EEF7FF] p-3 rounded-md font-medium"
-      id="nav-methods"
-      routerLink="/about-us"
-    >Qui Sommes Nous ?</a
-    >
-  </div>
-
-  <!-- -----------------------------------Method-------------------------------------------- -->
-
-  <div (mouseleave)="mDropdown = false" class="text-center col-span-1">
-    <a
-      (click)="mDropdown = !mDropdown"
-      (mouseover)="mDropdown = true"
-      class="hover:text-[#122D4E] hover:bg-[#EEF7FF] rounded-md font-medium p-3 mr-3"
-      id="nav-presentation"
-    >
-      Notre Méthode
-    </a>
-    <div *ngIf="mDropdown" class="relative">
-      <app-dropdown-method></app-dropdown-method>
+    <div class="col-span-1 min-w-[150px]">
+        <a
+                [ngClass]="{'rounded-md hover:text-[#122D4E] hover:bg-[#EEF7FF]' : isLargeScreen}"
+                class=" p-3"
+                id="nav-methods"
+                routerLink="/about-us"
+        >Qui Sommes Nous ?</a
+        >
     </div>
-  </div>
 
-  <!-- ----------------------------------Free Content------------------------------------ -->
+    <!-- -----------------------------------Method-------------------------------------------- -->
 
-  <div (mouseleave)="fcDropdown = false" class="col-span-1">
-    <a
-      (click)="fcDropdown = true"
-      (mouseover)="fcDropdown = true"
-      class="hover:text-[#122D4E] hover:bg-[#EEF7FF] rounded-md font-medium p-3"
-      id="nav-freeContent"
-    >Contenus Gratuits</a>
-    <div *ngIf="fcDropdown" class="relative">
-      <app-dropdown-free-content></app-dropdown-free-content>
-    </div>
-  </div>
-
-  <!-- -----------------------------------Blog---------------------------------------- -->
-
-  <div class="col-span-1">
-    <a
-      class="hover:text-[#122D4E] hover:bg-[#EEF7FF]  p-3 rounded-md font-medium"
-      id="nav-blog"
-      routerLink="/blog"
-    >Blog</a
+    <div (mouseleave)="mDropdown = false" [ngClass]="{'text-center': isLargeScreen}"
+         class="col-span-1 w-full"
     >
-  </div>
+        <a
+                (click)="mDropdown = true"
+                (mouseover)="mDropdown = true"
+                [ngClass]="{'rounded-md hover:text-[#122D4E] hover:bg-[#EEF7FF]' : isLargeScreen, 'rounded-tr-md': !isLargeScreen }"
+                class=" p-3"
+                id="nav-presentation"
+        >
+            Notre Méthode
+        </a>
+        <div *ngIf="mDropdown && isLargeScreen" class="relative">
+            <app-dropdown-method></app-dropdown-method>
+        </div>
+        <div *ngIf="mDropdown && !isLargeScreen"
+             class="w-full rounded-r-md p-[5%] text-center text-[#EEF7FF] flex-initial">
+            <app-method-content></app-method-content>
+        </div>
+    </div>
 
-  <!-- -------------------------------------Admin--------------------------------------- -->
+    <!-- ----------------------------------Free Content------------------------------------ -->
 
-  <div *ngIf="authService.isLoggedIn" class="col-span-1 grid justify-items-end" id="admin-icon">
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path clip-rule="evenodd"
-            d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-            fill-rule="evenodd"/>
-    </svg>
-  </div>
+    <div (mouseleave)="fcDropdown = false" class="col-span-1">
+        <a
+                (click)="fcDropdown = true"
+                (mouseover)="fcDropdown = true"
+                [ngClass]="{'rounded-md hover:text-[#122D4E] hover:bg-[#EEF7FF]' : isLargeScreen, 'rounded-tr-md': !isLargeScreen }"
+                class="p-3"
+                id="nav-freeContent"
+        >Contenus Gratuits
+        </a>
+        <div *ngIf="fcDropdown && isLargeScreen" class="relative w-full">
+            <app-dropdown-free-content></app-dropdown-free-content>
+        </div>
+    </div>
+    <div *ngIf="fcDropdown && !isLargeScreen" class="relative w-full">
+        <app-dropdown-free-content></app-dropdown-free-content>
+    </div>
+    <!-- -----------------------------------Blog---------------------------------------- -->
+
+    <div class="col-span-1">
+        <a
+                [ngClass]="{'rounded-md hover:text-[#122D4E] hover:bg-[#EEF7FF]' : isLargeScreen}"
+                class="p-3"
+                id="nav-blog"
+                routerLink="/blog"
+        >Blog</a
+        >
+    </div>
+
+    <!-- -------------------------------------Admin--------------------------------------- -->
+
+    <div *ngIf="authService.isLoggedIn" class="col-span-1 grid justify-items-end" id="admin-icon">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd"
+                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                  fill-rule="evenodd"/>
+        </svg>
+    </div>
 </div>

@@ -1,26 +1,40 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ScreenWidthService} from "../services/screen-width/screen-width.service";
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent
+export class NavbarComponent implements OnInit
 {
 
-  burgerToggle = false;
-  isLargedScreen = window.innerWidth >= 1024;
+    burgerToggle = false;
+    isLargedScreen = false;
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any)
-  {
-    this.isLargedScreen = event.target.innerWidth >= 1024;
-  }
+    constructor(private screenWidthService: ScreenWidthService)
+    {
+    }
 
-  toggleNavbar()
-  {
-    this.burgerToggle = !this.burgerToggle;
-    console.log(this.burgerToggle);
-  }
+
+    ngOnInit()
+    {
+        this.screenWidthService.isLargeScreen$.subscribe((isLargeScreen) =>
+        {
+            this.isLargedScreen = isLargeScreen;
+
+            if (this.isLargedScreen && this.burgerToggle)
+            {
+                this.toggleNavbar();
+            }
+        });
+    }
+
+    toggleNavbar()
+    {
+        this.burgerToggle = !this.burgerToggle;
+        console.log(this.burgerToggle);
+    }
+
 
 }

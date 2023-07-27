@@ -33,7 +33,9 @@ import {AuthInterceptor} from "./security/Interceptor/AuthInterceptor";
 import {AdminModule} from "./admin/admin.module";
 import {ListArticleComponent} from './page/blog/list-article/list-article.component';
 import {DetailsArticleComponent} from './page/blog/details-article/details-article.component';
-import { NavbarContentComponent } from './navbar/navbar-content/navbar-content/navbar-content.component';
+import {NavbarContentComponent} from './navbar/navbar-content/navbar-content/navbar-content.component';
+import {MethodContentComponent} from './navbar/dropdown/method-dropdown/content/method-content.component';
+import { ContentFreeCntComponent } from './navbar/dropdown/free-content-dropdown/content/content-free-cnt/content-free-cnt.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { NavbarContentComponent } from './navbar/navbar-content/navbar-content/n
     ListArticleComponent,
     DetailsArticleComponent,
     NavbarContentComponent,
+    MethodContentComponent,
+    ContentFreeCntComponent,
   ],
   imports: [
     BrowserModule,
