@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,22 @@ import {Router} from "@angular/router";
 export class NavigationEndService
 {
 
-  private;
+  private navigationEndSubject = new Subject<NavigationEnd>();
 
   constructor(private router: Router)
   {
+    this.router.events.subscribe((event) =>
+    {
+      if (event instanceof NavigationEnd)
+      {
+        this.navigationEndSubject.next(event);
+      }
+    });
   }
+
+  getNavigationEnd(): Observable<NavigationEnd>
+  {
+    return this.navigationEndSubject.asObservable();
+  }
+
 }

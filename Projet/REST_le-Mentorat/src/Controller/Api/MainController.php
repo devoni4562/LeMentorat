@@ -21,4 +21,28 @@ class MainController extends AbstractController
 
         return new JsonResponse(null);
     }
+
+    #[Route('/getCoffeeSubscribeInfo', methods: ['GET'])]
+    public function getCoffeeInfo(): JsonResponse
+    {
+        $filePath = $this->getParameter('kernel.project_dir').'/public/res/txt/coffee_subscribe_info.txt';
+
+        if (file_exists($filePath)){
+            $lignes = file($filePath);
+
+            $data = [];
+            foreach ($lignes as $ligne){
+                $parts = explode(':', $ligne, 2);
+                if (count($parts) === 2){
+                    $key = strtolower(trim($parts[0]));
+                    $value = trim(str_replace(["\r", "\n"], '', $parts[1]));
+                    $data[$key]=$value;
+                }
+            }
+
+            return new JsonResponse($data);
+        }
+
+        return new JsonResponse(null);
+    }
 }
