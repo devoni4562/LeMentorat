@@ -1,1 +1,26 @@
-<p>{{article.paragraph}}</p>
+<h2>{{article.title}}</h2>
+<p>{{article.summary}}</p>
+
+<div id="summary">
+  <h3>Sommaire:</h3>
+  <ul>
+    <li *ngFor="let paragraph of paragraphs">
+      <a (click)="scrollToAnchor(paragraph.title)" class="cursor-pointer">{{paragraph.title}}</a>
+    </li>
+  </ul>
+</div>
+
+<div *ngFor="let paragraph of paragraphs; let i = index">
+  <div *ngIf="i%2 !== 0">
+    <h3 id="{{paragraph.title}}">{{paragraph.title}}</h3>
+    <p>{{paragraph.text}}</p>
+    <img *ngIf="paragraph.image" [src]="paragraph.image" alt="Image Paragraphe"/>
+  </div>
+  <div *ngIf="i%2 === 0">
+    <app-white-section>
+      <h3 id="{{paragraph.title}}">{{paragraph.title}}</h3>
+      <p>{{paragraph.text}}</p>
+      <img *ngIf="paragraph.image" [src]="paragraph.image" alt="Image Paragraphe"/>
+    </app-white-section>
+  </div>
+</div>

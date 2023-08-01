@@ -7,12 +7,10 @@ use App\Repository\ArticleRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\MemberRepository;
 use App\Service\FileUploader;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/api/article')]
@@ -44,7 +42,7 @@ class ArticleController extends AbstractController
                 'video'=>  $article->getVideo(),
                 'image'=>$article->getImage(),
                 'date'=>$article->getDate()->format('Y-m-d'),
-                'paragraph'=>$article->getParagraph(),
+                'summary'=>$article->getSummary(),
                 'category'=> [
                     'id' => $article->getCategory()->getId(),
                     'wording' => $article->getCategory()->getLibelle()
@@ -71,7 +69,7 @@ public function newArticle(Request $request, FileUploader $fileUploader, Article
         $newArticle->setCategory($categorieRepository->find($formData['category']))
             ->setDate(new \DateTime())
             ->setWritter($memberRepository->find($formData['writterId']))
-            ->setParagraph($formData['paragraph'])
+            ->setSummary($formData['summary'])
             ->setTitle($formData['title'])
         ->setVideo($formData['video']);
 
@@ -102,7 +100,7 @@ public function newArticle(Request $request, FileUploader $fileUploader, Article
             'video'=> $newArticle->getVideo(),
             'image'=>$newArticle->getImage(),
             'date'=>$newArticle->getDate(),
-            'paragraph'=>$newArticle->getParagraph(),
+            'summary'=>$newArticle->getSummary(),
             'category'=> [
                 'id' => $newArticle->getCategory()->getId(),
                 'wording' => $newArticle->getCategory()->getLibelle()
@@ -115,5 +113,29 @@ public function newArticle(Request $request, FileUploader $fileUploader, Article
         return new  JsonResponse($response);
     }
 
+#[Route('/getParagraphsByArticle/{id}', methods: ['GET'])]
+public function getParagraphsByArticle(ArticleRepository $articleRepository, int $id): JsonResponse
+{
+    $article = $articleRepository->find($id);
+
+    if (!$article){
+        return new JsonResponse(['error' => 'Article Introuvable'], Response::HTTP_NOT_FOUND);
+    }
+
+    $paragraphs = $article->getParagraphs();
+
+    $response = [];
+    foreach ($paragraphs as $paragraph)
+    {
+        $response[] = [
+            'id' => $paragraph->getId(),
+            'title' => $paragraph->getTitle(),
+            'text' => $paragraph->getText(),
+            'image' => $paragraph->getPicture(),
+        ];
+    }
+
+    return new JsonResponse($response);
+}
 
 }

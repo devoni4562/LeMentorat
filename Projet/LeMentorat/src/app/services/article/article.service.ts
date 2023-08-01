@@ -30,6 +30,11 @@ export class ArticleService
     return this.http.get<any[]>(this.apiUrl);
   }
 
+  getParagraphByArticle(id: number)
+  {
+    return this.http.get<any[]>(this.apiUrl + 'getParagraphsByArticle/' + id);
+  }
+
 
   createNewArticle(form: any)
   {
