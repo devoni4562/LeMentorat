@@ -33,6 +33,12 @@ import {AuthInterceptor} from "./security/Interceptor/AuthInterceptor";
 import {AdminModule} from "./admin/admin.module";
 import {ListArticleComponent} from './page/blog/list-article/list-article.component';
 import {DetailsArticleComponent} from './page/blog/details-article/details-article.component';
+import {NavbarContentComponent} from './navbar/navbar-content/navbar-content/navbar-content.component';
+import {MethodContentComponent} from './navbar/dropdown/method-dropdown/content/method-content.component';
+import {FreeCntContentComponent} from './navbar/dropdown/free-content-dropdown/content/free-cnt-content.component';
+import {AdminContentComponent} from './navbar/admin-content/admin-content.component';
+import { YoutubeVideoInsertComponent } from './youtube-video-insert/youtube-video-insert.component';
+
 
 @NgModule({
   declarations: [
@@ -61,6 +67,11 @@ import {DetailsArticleComponent} from './page/blog/details-article/details-artic
     LoginComponent,
     ListArticleComponent,
     DetailsArticleComponent,
+    NavbarContentComponent,
+    MethodContentComponent,
+    FreeCntContentComponent,
+    AdminContentComponent,
+    YoutubeVideoInsertComponent,
   ],
   imports: [
     BrowserModule,

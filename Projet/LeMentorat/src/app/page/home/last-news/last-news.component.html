@@ -1,15 +1,11 @@
 <article id="lastNews">
   <div class="grid grid-cols-7 grid-rows-5">
     <div class="col-span-3 row-span-5 justify-self-start">
-      <iframe
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        class="2xl:h-[350px] 2xl:w-[720px] h-[280px] w-[500px]"
-        id="youtube"
-        src="https://www.youtube.com/embed/astF0e56w-s"
-        title="SÉMINAIRE LE MENTORAT : Les clés de notre lancement à +100k€"
-
-      ></iframe>
+      <app-youtube-video-insert
+        [id]="'indexVideo'"
+        [link]="'https://www.youtube.com/embed/astF0e56w-s'"
+        [title]="'SÉMINAIRE LE MENTORAT : Les clés de notre lancement à +100k€'"
+      ></app-youtube-video-insert>
     </div>
     <div
       class="col-span-4 row-span-4 place-self-stretch"
