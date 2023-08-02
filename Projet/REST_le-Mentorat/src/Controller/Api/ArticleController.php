@@ -113,7 +113,7 @@ public function newArticle(Request $request, FileUploader $fileUploader, Article
         return new  JsonResponse($response);
     }
 
-#[Route('/getParagraphsByArticle/{id}', methods: ['GET'])]
+#[Route('/getArticle/{id}', methods: ['GET'])]
 public function getParagraphsByArticle(ArticleRepository $articleRepository, int $id): JsonResponse
 {
     $article = $articleRepository->find($id);
@@ -122,18 +122,44 @@ public function getParagraphsByArticle(ArticleRepository $articleRepository, int
         return new JsonResponse(['error' => 'Article Introuvable'], Response::HTTP_NOT_FOUND);
     }
 
-    $paragraphs = $article->getParagraphs();
-
-    $response = [];
-    foreach ($paragraphs as $paragraph)
-    {
-        $response[] = [
+        $paragraphs = [];
+    foreach ($article->getParagraphs() as $paragraph){
+        $paragraphs[] = [
             'id' => $paragraph->getId(),
-            'title' => $paragraph->getTitle(),
             'text' => $paragraph->getText(),
-            'image' => $paragraph->getPicture(),
+            'image' =>$paragraph->getPicture(),
+            'title' => $paragraph->getTitle()
         ];
     }
+
+        $response = [
+            'id' => $article->getId(),
+            'writter' => [
+                'id' => $article->getWritter()->getId(),
+                'lastname' => $article->getWritter()->getLastName(),
+                'description' => $article->getWritter()->getDescription(),
+                'avatar' => $article->getWritter()->getAvatar(),
+                'pseudo' => $article->getWritter()->getPseudo(),
+                'firstname' => $article->getWritter()->getFirstName(),
+                'job' => [
+                    'id' => $article->getWritter()->getJob()->getId(),
+                    'name' => $article->getWritter()->getJob()->getName()
+                ],
+                'role' => $article->getWritter()->getRoles(),
+                'email' => $article->getWritter()->getEmail(),
+            ],
+            'video'=> $article->getVideo(),
+            'image'=>$article->getImage(),
+            'date'=>$article->getDate(),
+            'summary'=>$article->getSummary(),
+            'category'=> [
+                'id' => $article->getCategory()->getId(),
+                'wording' => $article->getCategory()->getLibelle()
+            ],
+            'title' => $article->getTitle(),
+            'paragraphs' => $paragraphs,
+        ];
+
 
     return new JsonResponse($response);
 }

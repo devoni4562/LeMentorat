@@ -10,8 +10,8 @@ import {ViewportScroller} from "@angular/common";
 export class DetailsArticleComponent implements OnInit
 {
 
+  articleId!: number;
   article: any;
-  paragraphs!: any[];
   protected readonly scrollTo = scrollTo;
 
   constructor(private articleService: ArticleService,
@@ -21,12 +21,12 @@ export class DetailsArticleComponent implements OnInit
 
   ngOnInit()
   {
-
-    this.article = this.articleService.getSelectedArticle();
-    console.log(typeof this.article.id);
-    this.articleService.getParagraphByArticle(this.article.id).subscribe((data: any[]) =>
+    console.log(this.articleService.getSelectedArticle());
+    this.articleId = this.articleService.getSelectedArticle();
+    this.articleService.getArticleById(this.articleId).subscribe((data: any[]) =>
     {
-      this.paragraphs = data;
+      console.log(data);
+      this.article = data;
     });
   }
 
