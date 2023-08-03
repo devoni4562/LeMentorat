@@ -128,7 +128,9 @@ public function getParagraphsByArticle(ArticleRepository $articleRepository, int
             'id' => $paragraph->getId(),
             'text' => $paragraph->getText(),
             'image' =>$paragraph->getPicture(),
-            'title' => $paragraph->getTitle()
+            'title' => $paragraph->getTitle(),
+            'link' => $paragraph->getLink(),
+            'linkText' => $paragraph->getLinkText(),
         ];
     }
 

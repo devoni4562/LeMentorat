@@ -40,7 +40,7 @@ class Article
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Paragraph::class, orphanRemoval: true)]
     private Collection $paragraphs;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $summary = null;
 
     public function __construct()

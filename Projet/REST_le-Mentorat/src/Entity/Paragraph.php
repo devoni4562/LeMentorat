@@ -27,6 +27,12 @@ class Paragraph
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $article = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $link = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $linkText = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +82,30 @@ class Paragraph
     public function setArticle(?Article $article): static
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): static
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    public function getLinkText(): ?string
+    {
+        return $this->linkText;
+    }
+
+    public function setLinkText(?string $linkText): static
+    {
+        $this->linkText = $linkText;
 
         return $this;
     }
