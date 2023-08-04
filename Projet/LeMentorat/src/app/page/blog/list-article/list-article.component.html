@@ -7,7 +7,7 @@
     *ngIf="!zoom"
     [style.background-image]="'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(http://localhost:8000/res/articles/img/' + article.image + ')'"
     class="h-80 w-1/2 bg-img flex justify-center items-center">
-    <h2 class="text-5xl font-bold text-[#EEF7FF]">{{article.title}}</h2>
+    <h2 class="text-5xl font-bold text-[#EEF7FF] text-justify w-2/3">{{article.title}}</h2>
   </div>
   <!-- hover -->
   <div
@@ -17,7 +17,7 @@
     [ngClass]="'bg-'+bg"
     class="h-80 w-1/2 flex justify-center items-center"
   >
-    <h2 class="text-xl font-bold text-center mx-52">{{article.paragraph}}</h2>
+    <h2 class="text-xl font-bold text-justify w-2/3">{{article.summary}}</h2>
   </div>
   <!-- createur -->
   <div class="mt-4 text-center">

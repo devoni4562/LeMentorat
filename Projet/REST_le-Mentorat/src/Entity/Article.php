@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -16,9 +18,7 @@ class Article
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $paragraph = null;
+    
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $video = null;
@@ -37,6 +37,17 @@ class Article
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Paragraph::class, orphanRemoval: true)]
+    private Collection $paragraphs;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $summary = null;
+
+    public function __construct()
+    {
+        $this->paragraphs = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,17 +65,6 @@ class Article
         return $this;
     }
 
-    public function getParagraph(): ?string
-    {
-        return $this->paragraph;
-    }
-
-    public function setParagraph(string $paragraph): static
-    {
-        $this->paragraph = $paragraph;
-
-        return $this;
-    }
 
     public function getVideo(): ?string
     {
@@ -122,6 +122,48 @@ class Article
     public function setTitle(string $title): static
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Paragraph>
+     */
+    public function getParagraphs(): Collection
+    {
+        return $this->paragraphs;
+    }
+
+    public function addParagraph(Paragraph $paragraph): static
+    {
+        if (!$this->paragraphs->contains($paragraph)) {
+            $this->paragraphs->add($paragraph);
+            $paragraph->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParagraph(Paragraph $paragraph): static
+    {
+        if ($this->paragraphs->removeElement($paragraph)) {
+            // set the owning side to null (unless already changed)
+            if ($paragraph->getArticle() === $this) {
+                $paragraph->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getSummary(): ?string
+    {
+        return $this->summary;
+    }
+
+    public function setSummary(string $summary): static
+    {
+        $this->summary = $summary;
 
         return $this;
     }

@@ -9,25 +9,33 @@ export class ArticleService
 {
 
   private apiUrl = 'http://localhost:8000/api/article/';
-  private selectedArticle: any;
+  private selectedArticleId!: number;
 
   constructor(private http: HttpClient)
   {
+    const storedArticleId = localStorage.getItem('selectedArticleId');
+    this.selectedArticleId = storedArticleId ? parseInt(storedArticleId, 10) : 0;
   }
 
   setSelectedArticle(article: any)
   {
-    this.selectedArticle = article;
+    this.selectedArticleId = article.id;
+    localStorage.setItem('selectedArticleId', this.selectedArticleId.toString());
   }
 
-  getSelectedArticle(): any
+  getSelectedArticle(): number
   {
-    return this.selectedArticle;
+    return this.selectedArticleId;
   }
 
   getAllArticles()
   {
     return this.http.get<any[]>(this.apiUrl);
+  }
+
+  getArticleById(id: number)
+  {
+    return this.http.get<any[]>(this.apiUrl + 'getArticle/' + id);
   }
 
 
