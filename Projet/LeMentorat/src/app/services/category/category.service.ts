@@ -8,7 +8,7 @@ export class CategoryService
 {
 
 
-  private apiUrl = 'http://localhost:8000/api/category/';
+  private apiUrl = 'https://localhost:8000/api/category/';
 
   constructor(private http: HttpClient)
   {

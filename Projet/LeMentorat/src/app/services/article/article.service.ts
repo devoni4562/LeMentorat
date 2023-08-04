@@ -8,7 +8,7 @@ import {tap} from "rxjs";
 export class ArticleService
 {
 
-  private apiUrl = 'http://localhost:8000/api/article/';
+  private apiUrl = 'https://localhost:8000/api/article/';
   private selectedArticleId!: number;
 
   constructor(private http: HttpClient)

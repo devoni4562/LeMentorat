@@ -14,7 +14,7 @@ export class AuthService
   admin: any;
   isLoggedIn: boolean = false;
   responseMessage: string = '';
-  apiUrl = 'http://localhost:8000/api/login';
+  apiUrl = 'https://localhost:8000/api/login';
   public loginSucces: EventEmitter<void> = new EventEmitter<void>();
   private inactivityTimeout: any;
 

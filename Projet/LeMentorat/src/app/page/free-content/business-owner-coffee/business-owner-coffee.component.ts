@@ -11,7 +11,7 @@ export class BusinessOwnerCoffeeComponent implements OnInit
   link: string = '';
   date: string = '';
   place: string = '';
-  urlFile: string = 'http://localhost:8000/getCoffeeSubscribeInfo';
+  urlFile: string = 'https://localhost:8000/getCoffeeSubscribeInfo';
 
   constructor(private http: HttpClient)
   {
