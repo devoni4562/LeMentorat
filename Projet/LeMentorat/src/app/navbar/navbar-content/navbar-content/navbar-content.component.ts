@@ -38,7 +38,13 @@ export class NavbarContentComponent implements OnInit, OnDestroy
           this.authService.resetInactivityTimeout();
           console.log('reset');
         }
+
+        if (this.adminToggle)
+        {
+          this.adminToggle = false;
+        }
       });
+
 
     this.screenWidthService.isLargeScreen$.subscribe((isLargeScreen) =>
     {

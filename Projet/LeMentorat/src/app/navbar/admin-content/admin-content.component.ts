@@ -9,6 +9,7 @@ import {ScreenWidthService} from "../../services/screen-width/screen-width.servi
 export class AdminContentComponent implements OnInit
 {
   isLargeScreen: boolean = false;
+  artDropdown = false;
 
   constructor(private screenWidthService: ScreenWidthService)
   {
@@ -20,5 +21,10 @@ export class AdminContentComponent implements OnInit
     {
       this.isLargeScreen = isLargeScreen;
     });
+  }
+
+  artDropdownToggle()
+  {
+    this.artDropdown = !this.artDropdown;
   }
 }

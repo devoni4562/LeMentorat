@@ -1,0 +1,65 @@
+<div>
+  <form (ngSubmit)="submitForm()" [formGroup]="form">
+    <!-- article -->
+    <h3>Information sur l'article :</h3>
+    <div id="title">
+      <label for="titleForm">Titre :</label>
+      <input formControlName="title" id="titleForm" type="text">
+    </div>
+
+    <div id="articleImg">
+      <label for="imgForm">Image :</label>
+      <input formControlName="image" id="imgForm" type="file">
+    </div>
+
+    <div id="category">
+      <label for="categoryForm">Categorie :</label>
+      <select formControlName="category" id="categoryForm">
+        <option *ngFor="let category of categories" [value]="category.id">{{category.wording}}</option>
+      </select>
+    </div>
+
+    <div id="articleVideo">
+      <label for="videoForm">Url Video :</label>
+      <input formControlName="video" id="videoForm" type="text">
+    </div>
+
+    <!-- Paragraph -->
+
+    <h3>Paragraphe :</h3>
+    <div *ngFor="let paragraph of paragraphs.controls; let i = index" class="mb-5">
+      <h4>Paragraphe {{i + 1}}:</h4>
+      <div>
+        <label for="paragrapheTitle{{i}}">Titre :</label>
+        <input formControlName="title{{i}}" id="paragrapheTitle{{i}}" required type="text">
+      </div>
+
+      <div>
+        <label for="paragraphImg{{i}}">Image :</label>
+        <input formControlName="image{{i}}" id="paragraphImg{{i}}" type="file">
+      </div>
+
+      <div>
+        <label for="paragraphText{{i}}">Texte :</label>
+        <textarea formControlName="paragraphText{{i}}" id="paragraphText{{i}}" required></textarea>
+      </div>
+
+      <div>
+        <label for="paragraphLink{{i}}">Lien :</label>
+        <input formControlName="paragraphLink{{i}}" id="paragraphLink{{i}}" type="text">
+      </div>
+      <div *ngIf="form.get('paragraphLink'+i)?.value">
+        <label for="paragraphLinkText{{i}}">Phrase d'accroche du lien :</label>
+        <input formControlName="paragraphLinkText{{i}}" id="paragraphLinkText{{i}}" type="text">
+      </div>
+
+    </div>
+    <div>
+      <button (click)="addParagraph()" type="button">Ajouter un paragraphe</button>
+    </div>
+
+    <div>
+      <button type="submit">valider</button>
+    </div>
+  </form>
+</div>
