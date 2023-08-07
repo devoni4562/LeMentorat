@@ -15,8 +15,8 @@ export class FooterComponent
 
   constructor(sanitizer: DomSanitizer)
   {
-    this.CGVLink = sanitizer.bypassSecurityTrustResourceUrl('http://localhost:8000/res/pdf/CGV.pdf');
+    this.CGVLink = sanitizer.bypassSecurityTrustResourceUrl('https://localhost:8000/res/pdf/CGV.pdf');
     this.legalMentionLink = sanitizer.bypassSecurityTrustResourceUrl(
-      'http://localhost:8000/res/pdf/mentions_legales.pdf');
+      'https://localhost:8000/res/pdf/mentions_legales.pdf');
   }
 }

@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 export class CaseStudyService
 {
 
-  apiURL = 'http://localhost:8000/api/case_study/';
+  apiURL = 'https://localhost:8000/api/case_study/';
 
   constructor(private http: HttpClient)
   {

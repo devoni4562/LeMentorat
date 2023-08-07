@@ -10,7 +10,7 @@
           <img
             alt="Logo"
             class="min-h-[80px]"
-            src="http://localhost:8000/res/img/logo/Logo-rd.png"
+            src="https://localhost:8000/res/img/logo/Logo-rd.png"
 
           />
         </a>
@@ -38,7 +38,7 @@
 <div *ngIf="burgerToggle"
      class="fixed top-0 right-0 w-full h-full bg-black bg-opacity-50 z-10">
   <div (click)="toggleNavbar()" class="w-full h-full"></div>
-  <div class="bg-[#122D4E] w-2/3 sm:w-1/3 fixed top-0 right-0 h-full text-[#EEF7FF] ">
+  <div class="bg-[#122D4E] w-2/3 sm:w-1/3 fixed top-0 right-0 h-full text-[#EEF7FF] overflow-auto">
     <div class="w-full flex justify-end mt-5 ">
       <p (click)="toggleNavbar()"
          class="me-2 cursor-pointer">Fermer</p>
