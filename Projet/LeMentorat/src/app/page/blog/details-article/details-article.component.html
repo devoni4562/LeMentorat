@@ -1,4 +1,4 @@
-<article class="grid grid-cols-1 justify-items-center gap-y-5" id="{{article.title}}">
+<article class="grid grid-cols-1 justify-items-center gap-y-5" id="{{article?.title}}">
   <h2 class="text-5xl text-justify font-semibold my-5 w-2/3">{{article?.title}}</h2>
   <div class="w-full">
     <app-white-section>
@@ -38,7 +38,8 @@
              target="_blank">{{paragraph.link}}</a>
         </div>
       </div>
-      <img *ngIf="paragraph.image" [src]="'https://localhost:8000/res/paragraph/img/'+paragraph.image"
+      <img *ngIf="paragraph.image"
+           [src]="'https://localhost:8000/res/articles/'+article.title.replaceAll(' ', '_')+'/paragraphs/'+paragraph.image"
            alt="Image Paragraphe"/>
     </div>
     <div *ngIf="i%2 === 0" class="w-full">
@@ -60,7 +61,8 @@
                    target="_blank">{{paragraph.link}}</a>
               </div>
             </div>
-            <img *ngIf="paragraph.image" [src]="'https://localhost:8000/res/paragraph/img/'+paragraph.image"
+            <img *ngIf="paragraph.image"
+                 [src]="'https://localhost:8000/res/articles/'+article.title.replace(' ', '_')+'/paragraphs/'+paragraph.image"
                  alt="Image Paragraphe"/>
           </div>
         </div>

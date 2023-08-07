@@ -28,6 +28,7 @@ export class CreateArticleComponent implements OnInit
       image: [null],
       video: [null],
       title: ['', Validators.required],
+      summary: ['', Validators.required],
       paragraphs: this.formBuilder.array([])
     });
   }
@@ -44,7 +45,17 @@ export class CreateArticleComponent implements OnInit
 
   submitForm()
   {
-    this.articleService.createNewArticle(this.form);
+    this.articleService.createNewArticle(this.form).subscribe(
+      response =>
+      {
+        console.log('Article créé avec succès :', response);
+        this.form.reset();
+      },
+      error =>
+      {
+        console.error('Erreur lors de la création de l\'article :', error);
+      }
+    );
   }
 
   addParagraph()

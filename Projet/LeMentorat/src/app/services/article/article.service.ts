@@ -48,6 +48,7 @@ export class ArticleService
     articleFormData.append('writterId', form.get('writterId').value);
     articleFormData.append('title', form.get('title').value);
     articleFormData.append('video', form.get('video').value);
+    articleFormData.append('summary', form.get('summary').value);
 
     const imageinput = document.getElementById('imgForm') as HTMLInputElement;
     const imageFile = imageinput?.files?.[0];
@@ -79,7 +80,7 @@ export class ArticleService
 
     articleFormData.append('paragraphs', JSON.stringify(paragraphsData));
 
-    this.http.post<any>(this.apiUrl + 'new', articleFormData);
+    return this.http.post<any>(this.apiUrl + 'new', articleFormData);
 
   }
 
