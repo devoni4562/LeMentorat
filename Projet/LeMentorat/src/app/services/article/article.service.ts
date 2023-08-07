@@ -59,27 +59,28 @@ export class ArticleService
     const paragraphsArray = form.get('paragraphs') as FormArray;
     const paragraphsData = paragraphsArray.controls.map((paragraphControl, index) =>
     {
-
       const paragraphImageInput = document.getElementById('paragraphImg' + index) as HTMLInputElement;
       const paragraphImageFile = paragraphImageInput?.files?.[0];
 
-
-      return {
+      const paragraphData = {
         paragraphTitle: paragraphControl.get('paragraphTitle')?.value,
-        paragraphImage: [paragraphImageFile, paragraphImageFile?.name],
         paragraphText: paragraphControl.get('paragraphText')?.value,
         paragraphLink: paragraphControl.get('paragraphLink')?.value,
-        paragraphLinkText: paragraphControl.get('paragraphLinkText')?.value
-
+        paragraphLinkText: paragraphControl.get('paragraphLinkText')?.value,
       };
 
+      if (paragraphImageFile)
+      {
+        articleFormData.append('imageParagraph' + index, paragraphImageFile, paragraphImageFile.name);
+      }
+
+      return paragraphData;
     });
+
     articleFormData.append('paragraphs', JSON.stringify(paragraphsData));
 
-    articleFormData.forEach((value) =>
-    {
-      console.log(value);
-    });
+    this.http.post<any>(this.apiUrl + 'new', articleFormData);
+
   }
 
   getForm()
