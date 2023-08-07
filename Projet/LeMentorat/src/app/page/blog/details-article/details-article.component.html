@@ -40,7 +40,7 @@
       </div>
       <img *ngIf="paragraph.image"
            [src]="'https://localhost:8000/res/articles/'+article.title.replaceAll(' ', '_')+'/paragraphs/'+paragraph.image"
-           alt="Image Paragraphe"/>
+           alt="Image Paragraphe {{i}}"/>
     </div>
     <div *ngIf="i%2 === 0" class="w-full">
       <app-white-section>
@@ -62,7 +62,7 @@
               </div>
             </div>
             <img *ngIf="paragraph.image"
-                 [src]="'https://localhost:8000/res/articles/'+article.title.replace(' ', '_')+'/paragraphs/'+paragraph.image"
+                 [src]="'https://localhost:8000/res/articles/'+article.title.replaceAll(' ', '_')+'/paragraphs/'+paragraph.image"
                  alt="Image Paragraphe"/>
           </div>
         </div>
