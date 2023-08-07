@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WitnessesService} from '../../../services/witnesses/witnesses.service';
+import {ScreenWidthService} from "../../../services/screen-width/screen-width.service";
 
 @Component({
   selector: 'app-index-witnesses',
@@ -9,9 +10,14 @@ import {WitnessesService} from '../../../services/witnesses/witnesses.service';
 export class WitnessesComponent implements OnInit
 {
   witnesses: any[] = [];
+  isLargeScreen: boolean = true;
 
-  constructor(private witnessesService: WitnessesService)
+  constructor(private screenWidthService: ScreenWidthService, private witnessesService: WitnessesService)
   {
+    this.screenWidthService.isLargeScreen$.subscribe(isLargeScreen =>
+    {
+      this.isLargeScreen = isLargeScreen;
+    });
   }
 
   ngOnInit()

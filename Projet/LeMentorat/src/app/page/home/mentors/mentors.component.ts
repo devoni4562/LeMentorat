@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MentorService} from '../../../services/mentors/mentor.service';
+import {ScreenWidthService} from "../../../services/screen-width/screen-width.service";
 
 @Component({
   selector: 'app-index-mentors',
@@ -16,9 +17,14 @@ export class MentorsComponent implements OnInit
     nextArrow: '',
     dots: true,
   };
+  isLargeScreen: boolean = true;
 
-  constructor(private mentorService: MentorService)
+  constructor(private mentorService: MentorService, private screenWidthService: ScreenWidthService)
   {
+    this.screenWidthService.isLargeScreen$.subscribe(isLargeScreen =>
+    {
+      this.isLargeScreen = isLargeScreen;
+    });
   }
 
   ngOnInit()
