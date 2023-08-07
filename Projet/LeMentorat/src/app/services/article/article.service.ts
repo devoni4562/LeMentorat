@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {tap} from "rxjs";
+import {FormArray} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -41,70 +41,48 @@ export class ArticleService
 
   createNewArticle(form: any)
   {
-    const articleFormData = new FormData();
+    console.log(form);
+    const articleFormData: FormData = new FormData();
 
-    const categoryValue = form.get('category').value;
-
-    if (categoryValue !== null)
-    {
-      articleFormData.append('category', categoryValue);
-      console.log(articleFormData.get('category'));
-    }
-
-    const paragraphValue = form.get('paragraph').value;
-    if (paragraphValue !== null)
-    {
-      articleFormData.append('paragraph', paragraphValue);
-    }
-
-    const writterIdValue = form.get('writterId').value;
-    if (writterIdValue !== null)
-    {
-      articleFormData.append('writterId', writterIdValue);
-    }
-
-    const titleValue = form.get('title').value;
-    if (titleValue !== null)
-    {
-      articleFormData.append('title', titleValue);
-    }
+    articleFormData.append('category', form.get('category').value);
+    articleFormData.append('writterId', form.get('writterId').value);
+    articleFormData.append('title', form.get('title').value);
+    articleFormData.append('video', form.get('video').value);
 
     const imageinput = document.getElementById('imgForm') as HTMLInputElement;
     const imageFile = imageinput?.files?.[0];
-
-
     if (imageFile)
     {
       articleFormData.append('image', imageFile, imageFile.name);
-      console.log(articleFormData.get('image'));
     }
 
-
-    const videoValue = form.get('video').value;
-
-
-    if (videoValue != null)
+    const paragraphsArray = form.get('paragraphs') as FormArray;
+    const paragraphsData = paragraphsArray.controls.map((paragraphControl, index) =>
     {
-      articleFormData.append('video', videoValue);
-    }
 
-    console.log(articleFormData.get('category'));
+      const paragraphImageInput = document.getElementById('paragraphImg' + index) as HTMLInputElement;
+      const paragraphImageFile = paragraphImageInput?.files?.[0];
 
-    return this.http.post<any>(this.apiUrl + 'new', articleFormData)
-      .pipe(
-        tap(response =>
-        {
-          console.log(response);
-        })
-      )
-      .subscribe({
-        next: () =>
-        {
-        },
-        error: error =>
-        {
-          console.error(error);
-        }
-      });
+
+      return {
+        paragraphTitle: paragraphControl.get('paragraphTitle')?.value,
+        paragraphImage: [paragraphImageFile, paragraphImageFile?.name],
+        paragraphText: paragraphControl.get('paragraphText')?.value,
+        paragraphLink: paragraphControl.get('paragraphLink')?.value,
+        paragraphLinkText: paragraphControl.get('paragraphLinkText')?.value
+
+      };
+
+    });
+    articleFormData.append('paragraphs', JSON.stringify(paragraphsData));
+
+    articleFormData.forEach((value) =>
+    {
+      console.log(value);
+    });
+  }
+
+  getForm()
+  {
   }
 }

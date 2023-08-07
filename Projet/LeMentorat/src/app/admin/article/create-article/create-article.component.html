@@ -25,34 +25,36 @@
     </div>
 
     <!-- Paragraph -->
-
     <h3>Paragraphe :</h3>
-    <div *ngFor="let paragraph of paragraphs.controls; let i = index" class="mb-5">
-      <h4>Paragraphe {{i + 1}}:</h4>
-      <div>
-        <label for="paragrapheTitle{{i}}">Titre :</label>
-        <input formControlName="title{{i}}" id="paragrapheTitle{{i}}" required type="text">
-      </div>
+    <div formArrayName="paragraphs">
+      <div *ngFor="let paragraph of formParagraphs.controls; let i = index" class="mb-5">
+        <div [formGroupName]="i">
+          <h4>Paragraphe {{i + 1}}:</h4>
+          <div>
+            <label for="paragraphTitle{{i}}">Titre :</label>
+            <input formControlName="paragraphTitle" id="paragrapheTitle{{i}}" required type="text">
+          </div>
 
-      <div>
-        <label for="paragraphImg{{i}}">Image :</label>
-        <input formControlName="image{{i}}" id="paragraphImg{{i}}" type="file">
-      </div>
+          <div>
+            <label for="paragraphImg{{i}}">Image :</label>
+            <input formControlName="paragraphImage" id="paragraphImg{{i}}" type="file">
+          </div>
 
-      <div>
-        <label for="paragraphText{{i}}">Texte :</label>
-        <textarea formControlName="paragraphText{{i}}" id="paragraphText{{i}}" required></textarea>
-      </div>
+          <div>
+            <label for="paragraphText{{i}}">Texte :</label>
+            <textarea formControlName="paragraphText" id="paragraphText{{i}}" required></textarea>
+          </div>
 
-      <div>
-        <label for="paragraphLink{{i}}">Lien :</label>
-        <input formControlName="paragraphLink{{i}}" id="paragraphLink{{i}}" type="text">
+          <div>
+            <label for="paragraphLink{{i}}">Lien :</label>
+            <input formControlName="paragraphLink" id="paragraphLink{{i}}" type="text">
+          </div>
+          <div *ngIf="paragraph.get('paragraphLink')?.dirty && paragraph.get('paragraphLink')?.value !== ''">
+            <label for="paragraphLinkText{{i}}">Phrase d'accroche du lien :</label>
+            <input formControlName="paragraphLinkText" id="paragraphLinkText{{i}}" type="text">
+          </div>
+        </div>
       </div>
-      <div *ngIf="form.get('paragraphLink'+i)?.value">
-        <label for="paragraphLinkText{{i}}">Phrase d'accroche du lien :</label>
-        <input formControlName="paragraphLinkText{{i}}" id="paragraphLinkText{{i}}" type="text">
-      </div>
-
     </div>
     <div>
       <button (click)="addParagraph()" type="button">Ajouter un paragraphe</button>
