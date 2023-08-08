@@ -25,16 +25,7 @@
     >
       <div *ngFor="let mentor of mentors" class="slide" ngxSlickItem>
         <div [ngClass]="{'grid-cols-2': isLargeScreen, 'grid-rows-2': !isLargeScreen}" class="grid">
-          <div class="flex justify-center">
-            <img
-              [src]="'https://localhost:8000/res/img/avatar/mentors/' + mentor.avatar"
-              alt="{{ mentor.pseudo }}"
-              class="rounded-xl"
-              height="50%"
-              width="50%"
-            />
-          </div>
-          <div class="self-center">
+          <div [ngClass]="{'row-start-2': !isLargeScreen}" class="self-center">
             <h2
               class="text-center text-2xl font-semibold underline decoration-1 mb-3"
             >
@@ -44,6 +35,16 @@
               {{ mentor.description }}
             </p>
           </div>
+          <div class="flex justify-center">
+            <img
+              [src]="'https://localhost:8000/res/img/avatar/mentors/' + mentor.avatar"
+              alt="{{ mentor.pseudo }}"
+              class="rounded-xl"
+              height="50%"
+              width="50%"
+            />
+          </div>
+
         </div>
       </div>
     </ngx-slick-carousel>

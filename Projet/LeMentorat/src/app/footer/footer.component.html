@@ -35,31 +35,20 @@
       <button (click)="showLegalMention = true" class="underline">Mentions légales</button>
     </p>
   </div>
-  <div class="place-self-center grid grid-cols-4 gap-3">
-    <a href="https://www.instagram.com/lementorat/"
-    ><img
-      alt="logo instagram"
-      class="w-[60px] p-2.5"
-      src="https://localhost:8000/res/img/reseau/instagram.webp"
-
-    /></a>
-    <a href="https://www.tiktok.com/@le.mentorat?is_from_webapp=1&sender_device=pc"
-    ><img
-      alt="logo tiktok"
-      class="w-[60px] p-2.5"
-      src="https://localhost:8000/res/img/reseau/tiktok.png"
-    /></a>
-    <a href="https://www.youtube.com/@lementorat"
-    ><img
-      alt="logo youtube"
-      class="p-2.5 w-[60px]"
-      src="https://localhost:8000/res/img/reseau/youtube.png"
-    /></a>
-    <a href="https://www.facebook.com/profile.php?id=100071599940370"
-    ><img
-      alt="logo facebook"
-      class="w-[60px] p-2.5"
-      src="https://localhost:8000/res/img/reseau/facebook.webp"
-    /></a>
+  <div *ngIf="isLargeScreen">
+    <app-reseaux></app-reseaux>
+  </div>
+  <div *ngIf="!isLargeScreen" class="flex justify-end items-center">
+    <svg (click)="toggleReseaux()" class="w-6 h-6 mr-[5%]" fill="none" stroke="currentColor" stroke-width="1.5"
+         viewBox="0 0 24 24"
+         xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round"
+            stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div *ngIf="showReseaux"
+       class="fixed bottom-10 right-0 bg-[#122D4E] rounded-xl">
+    <app-reseaux></app-reseaux>
   </div>
 </footer>

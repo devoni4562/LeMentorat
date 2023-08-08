@@ -1,6 +1,5 @@
 <article id="lastNews">
-  <div [ngClass]="{'grid justify-items-center': isLargeScreen}"
-       class="grid justify-items-center">
+  <div [ngClass]="{'grid grid-cols-2 justify-items-center': isLargeScreen}">
     <div *ngIf="isLargeScreen" class="w-full h-full">
       <app-youtube-video-insert
         [id]="'indexVideo'"

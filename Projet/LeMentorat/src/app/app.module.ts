@@ -39,6 +39,7 @@ import {FreeCntContentComponent} from './navbar/dropdown/free-content-dropdown/c
 import {AdminContentComponent} from './navbar/admin-content/admin-content.component';
 import { YoutubeVideoInsertComponent } from './youtube-video-insert/youtube-video-insert.component';
 import { ArticleContentComponent } from './navbar/admin-content/dropdown/article-content/article-content.component';
+import { ReseauxComponent } from './footer/reseaux/reseaux.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { ArticleContentComponent } from './navbar/admin-content/dropdown/article
     AdminContentComponent,
     YoutubeVideoInsertComponent,
     ArticleContentComponent,
+    ReseauxComponent,
   ],
   imports: [
     BrowserModule,

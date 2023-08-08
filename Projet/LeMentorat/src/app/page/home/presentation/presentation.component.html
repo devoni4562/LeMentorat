@@ -1,28 +1,20 @@
-<article class="m-6" id="presentation">
-  <div class="grid grid-cols-6 grid-rows-5">
+<article [ngClass]="{'bg-img rounded-xl': isLargeScreen}" class="m-6 " id="presentation">
+  <div class="bg-opacity flex justify-center flex-col rounded-xl">
     <div
-      class="col-span-4 row-span-4 self-center text-justify me-5 grid grid-rows-3"
+      class="text-justify me-5 grid grid-rows-2"
       id="text-presentation"
     >
-      <p class="text-5xl font-semibold  text-start">
-        Vivre sereinement de son activité ?
+      <p class="text-3xl lg:text-5xl font-semibold p-10">
+        Vivre sereinement de son activité de
+        coaching ou de prestation de
+        service ?
       </p>
-      <p class="text-end row-start-3 text-2xl">
-        Un accompagnement personnalisé dans le développement de son activité.
+      <p class="text-center sm:text-end text-xl lg:text-3xl p-5">
+        Un accompagnement personnalisé pour être soutenu dans le développement de son activité
       </p>
     </div>
     <div
-      class="row-span-5 col-span-2 justify-self-center"
-      id="img-presentation"
-    >
-      <img
-        alt="main sur ordinateur"
-        class="rounded-xl"
-        src="https://localhost:8000/res/img/index/seminaire.JPG"
-      />
-    </div>
-    <div
-      class="col-start-2 col-span-2 hover:text-orange-500 underline self-center justify-self-center"
+      class="hover:text-orange-500 underline self-center justify-self-center"
       id="aboutUs"
     >
       <a routerLink="/about-us">Découvrir qui nous sommes.</a>
